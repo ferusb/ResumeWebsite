@@ -1,22 +1,68 @@
-# 🚀 Brian Ferus - Portfolio Website
+# Brian Ferus - Software Engineer
 
 <div align="center">
 
-![Portfolio](https://img.shields.io/badge/Portfolio-2.0-blue?style=for-the-badge)
-![Next.js](https://img.shields.io/badge/Next.js-14.0-black?style=for-the-badge&logo=next.js)
-![React](https://img.shields.io/badge/React-18.2-61dafb?style=for-the-badge&logo=react)
+![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)
+![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6?style=for-the-badge&logo=typescript)
 ![Three.js](https://img.shields.io/badge/Three.js-r159-black?style=for-the-badge&logo=three.js)
-![Tailwind](https://img.shields.io/badge/Tailwind-3.3-38bdf8?style=for-the-badge&logo=tailwind-css)
 
-**My personal portfolio website featuring stunning 3D animations, multi-theme support, and modern design**
+**Full-stack Software Engineer specializing in React, TypeScript, and building scalable enterprise applications**
 
-[Live Demo](https://ferusb.github.io) · [Report Bug](https://github.com/ferusb/ResumeWebsite/issues) · [Request Feature](https://github.com/ferusb/ResumeWebsite/issues)
+[Live Portfolio](https://ferusb.github.io) · [LinkedIn](https://linkedin.com/in/brian-ferus) · [GitHub](https://github.com/ferusb)
 
 </div>
 
 ---
 
-## ✨ Features
+## 👨‍💻 About Me
+
+I'm a **Software Engineer III** with **8+ years of experience** building high-performance web applications and leading engineering initiatives in healthcare technology and enterprise retail systems.
+
+### Current Role
+**Verily (Alphabet)** - Software Engineer III
+- Leading UI engineering for greenfield medical-grade web applications enabling bi-directional streaming to diabetic retinopathy cameras
+- Building React apps with gRPC, C++, and React Native for clinical studies with real patients
+- Redesigned and refactored production camera applications, reducing production bugs by **60%+**
+- Engineering cutting-edge health platform experiences with AI features (calorie estimates, chat assistants) and secure third-party health data integration
+
+### Previous Experience
+**Target Corporation** - Senior Software Engineer (5+ years)
+- Delivered high-impact TypeScript/React components in a **12,000+ commit** enterprise codebase serving **30+ business categories**
+- Implemented Node GraphQL aggregation layer powering **100+ Redux-managed data types**
+- Designed and deployed CI/CD, network debugging, and database tools resolving **400+ production issues**
+- Expanded automated testing with Cypress/Jest: **200% coverage increase**, **20% fewer production defects**, **70% faster test runtime**
+- Built file-transporter service supporting **7,000+ daily users** across multiple React apps
+- Co-founded React component library adopted across **100+ internal applications**
+- Migrated legacy codebase to Apollo GraphQL and React, reducing code size by **25%** and eliminating **50,000+ lines**
+
+---
+
+## 🛠️ Technical Expertise
+
+### Frontend Development
+**JavaScript/TypeScript**: React.js, Next.js, Redux.js, GraphQL, Micro Frontends, AngularJS
+**Styling & UI**: Tailwind CSS, Sass, AG Grid, Figma, UX Design
+**Animation & 3D**: Three.js, Framer Motion, React Three Fiber
+**Testing**: Jest, Cypress (200% coverage increase, 70% faster runtime)
+**State Management**: Redux.js, Apollo Client, Context API
+
+### Backend & Infrastructure
+**Languages**: Node.js, Java, Python, Golang, C++
+**Frameworks**: Express.js, Spring Boot, gRPC
+**Databases**: PostgreSQL, MongoDB, Elasticsearch
+**Real-time**: WebSockets, Socket.io, Protobuf
+**Cloud & DevOps**: GCP, Docker, Kubernetes, Nginx, CI/CD
+
+### Tools & Practices
+**Version Control**: Git, GitHub, NX Monorepos
+**Monitoring**: Datadog, Kibana, Grafana, Google Analytics
+**Development**: AI Coding Tools, Webpack, Linux/Unix
+**Methodologies**: Agile/Scrum, Micro Frontends Architecture
+
+---
+
+## ✨ Portfolio Features
 
 ### 🎨 **Multi-Theme System**
 - 🌙 **Dark Mode** - Eye-friendly dark theme
@@ -65,23 +111,24 @@
 
 ---
 
-## 🛠️ Tech Stack
+## 🏗️ Portfolio Tech Stack
 
-### Frontend
-- **React.js 18.2.0** - UI Library
-- **Next.js 14.0.3** - React Framework
-- **Tailwind CSS 3.3.5** - Utility-first CSS
-- **Framer Motion 10.16.4** - Animation Library
-- **Three.js + React Three Fiber** - 3D Graphics
-- **TypeScript** - Type Safety
+This portfolio showcases modern web development practices and technologies:
 
-### Backend & Tools
-- **Node.js** - Runtime Environment
-- **Express.js** - API Routes
-- **MongoDB & PostgreSQL** - Databases
-- **Socket.IO** - Real-time Features
-- **Vercel** - Deployment Platform
-- **Git & GitHub** - Version Control
+### Core Technologies
+- **React.js 19.2** & **Next.js 15.5** - Latest React features with server-side rendering
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first styling
+- **Three.js + React Three Fiber** - Interactive 3D graphics
+- **Framer Motion** - Smooth animations and transitions
+
+### Features Demonstrated
+- **Component Architecture** - Reusable, maintainable React components
+- **Performance Optimization** - Code splitting, lazy loading, SSR/SSG
+- **Responsive Design** - Mobile-first approach across all devices
+- **GitHub API Integration** - Dynamic project fetching and display
+- **Theme System** - Multi-theme support with CSS variables
+- **Modern JavaScript** - ES6+, async/await, destructuring
 
 ---
 
@@ -286,13 +333,16 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Connect With Me
 
-**Brian Ferus**
+**Brian Ferus** - Software Engineer III
 
-- Website: [ferusb.github.io](https://ferusb.github.io)
+- Portfolio: [ferusb.github.io](https://ferusb.github.io)
+- LinkedIn: [linkedin.com/in/brian-ferus](https://linkedin.com/in/brian-ferus)
 - GitHub: [@ferusb](https://github.com/ferusb)
-- Email: btferus@gmail.com
+
+### Education
+**Michigan Technological University** - Bachelor's in Computer Science (2013-2017)
 
 ---
 
