@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   try {
-    const username = 'umutxyp'; // GitHub kullanıcı adınız
+    const username = 'ferusb'; // GitHub username
     
     // GitHub API'den public repos çek
     const response = await fetch(

@@ -66,18 +66,18 @@ function MyApp({ Component, pageProps }) {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 lg:py-12">
               <div className="flex flex-col md:flex-row items-center justify-between gap-4 sm:gap-6">
                 <div className="text-center md:text-left">
-                  <p 
+                  <p
                     style={{ color: 'var(--color-text)' }}
                     className="flex items-center gap-2 justify-center md:justify-start text-sm sm:text-base"
                   >
                     <span>Made with</span>
-                    <span 
+                    <span
                       className="animate-pulse"
                       style={{ color: 'var(--color-accent)' }}
                     >
                       ❤️
                     </span>
-                    <span>by umutxyp</span>
+                    <span>by Brian Ferus</span>
                   </p>
                   <p 
                     style={{ color: 'var(--color-textSecondary)' }}

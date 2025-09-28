@@ -1,4 +1,4 @@
-# 🚀 Umut Bayraktar - Portfolio Website
+# 🚀 Brian Ferus - Portfolio Website
 
 <div align="center">
 
@@ -8,9 +8,9 @@
 ![Three.js](https://img.shields.io/badge/Three.js-r159-black?style=for-the-badge&logo=three.js)
 ![Tailwind](https://img.shields.io/badge/Tailwind-3.3-38bdf8?style=for-the-badge&logo=tailwind-css)
 
-**Modern portfolio website with stunning 3D animations, multi-theme support, and cutting-edge design**
+**My personal portfolio website featuring stunning 3D animations, multi-theme support, and modern design**
 
-[Live Demo](https://umutbayraktar.vercel.app) · [Report Bug](https://github.com/umutxyp/Personal-Website/issues) · [Request Feature](https://github.com/umutxyp/Personal-Website/issues)
+[Live Demo](https://ferusb.github.io) · [Report Bug](https://github.com/ferusb/ResumeWebsite/issues) · [Request Feature](https://github.com/ferusb/ResumeWebsite/issues)
 
 </div>
 
@@ -95,8 +95,8 @@
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/umutxyp/Personal-Website.git
-cd Personal-Website
+git clone https://github.com/ferusb/ResumeWebsite.git
+cd ResumeWebsite
 ```
 
 2. **Install dependencies**
@@ -271,13 +271,12 @@ npm start
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+This is my personal portfolio website, but feel free to fork it and customize it for yourself!
 
-1. Fork the project at [github.com/umutxyp/Personal-Website](https://github.com/umutxyp/Personal-Website)
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Fork the project at [github.com/ferusb/ResumeWebsite](https://github.com/ferusb/ResumeWebsite)
+2. Customize `lib/config.js` with your own information
+3. Update styling and content to match your preferences
+4. Deploy to your own hosting platform
 
 ---
 
@@ -289,14 +288,11 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## 👨‍💻 Author
 
-**Umut Bayraktar**
+**Brian Ferus**
 
-- Website: [umutbayraktar.vercel.app](https://umutbayraktar.vercel.app)
-- GitHub: [@umutxyp](https://github.com/umutxyp)
-- Instagram: [@umutxyp](https://instagram.com/umutxyp)
-- YouTube: [@umutxyp](https://youtube.com/umutxyp)
-- Twitter: [@devbayraktar](https://twitter.com/devbayraktar)
-- Discord: [Join Server](https://discord.gg/NrkMaPRc73)
+- Website: [ferusb.github.io](https://ferusb.github.io)
+- GitHub: [@ferusb](https://github.com/ferusb)
+- Email: btferus@gmail.com
 
 ---
 
@@ -312,8 +308,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 <div align="center">
 
-**⭐ Star this repo if you find it helpful!**
-
-Made with ❤️ by Umut Bayraktar
+Made with ❤️ by Brian Ferus
 
 </div>
