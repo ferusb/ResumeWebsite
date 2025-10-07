@@ -1,4 +1,9 @@
-/* Global Styles for Material-UI Portfolio */
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
 
 * {
   box-sizing: border-box;
