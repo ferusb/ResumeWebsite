@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { siteConfig } from '../lib/config';
@@ -12,36 +12,9 @@ export default function ProjectsSection() {
   });
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState('all');
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
 
-  // GitHub repos'u çek
-  useEffect(() => {
-    fetch('/api/github-repos')
-      .then(res => res.json())
-      .then(data => {
-        // GitHub'dan gelen projeleri formatla
-        const formattedProjects = data.map(repo => ({
-          id: repo.id,
-          title: repo.name,
-          description: repo.description || 'No description provided',
-          image: repo.image, // GitHub OpenGraph image
-          tags: [], // Sadece language kullanacağız, topics gösterme
-          liveUrl: repo.homepage || null,
-          githubUrl: repo.url,
-          stars: repo.stars,
-          forks: repo.forks,
-          language: repo.language,
-          updatedAt: repo.updatedAt,
-        }));
-        setProjects(formattedProjects);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Failed to fetch GitHub repos:', err);
-        setLoading(false);
-      });
-  }, []);
+  // Use static projects from config
+  const projects = siteConfig.projects || [];
 
   // Sadece programlama dillerini filtre olarak göster
   const allLanguages = ['all', ...new Set(projects.map(p => p.language).filter(Boolean))];
@@ -60,15 +33,15 @@ export default function ProjectsSection() {
           className="text-center mb-16"
         >
           <h2 style={{ fontWeight: 'var(--style-headingWeight)' }} className="text-4xl md:text-5xl mb-4">
-            <span 
+            <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary))` }}
             >
-              GitHub Projects {loading && '⏳'}
+              My Projects
             </span>
           </h2>
           <p style={{ color: 'var(--color-textSecondary)' }} className="text-xl max-w-2xl mx-auto">
-            {loading ? 'Loading from GitHub...' : `${projects.length} repositories sorted by ⭐ stars`}
+            {projects.length} featured projects sorted by ⭐ stars
           </p>
         </motion.div>
 
