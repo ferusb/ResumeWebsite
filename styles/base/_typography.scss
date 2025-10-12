@@ -1,0 +1,238 @@
+// =============================================================================
+// Base Typography Styles
+// =============================================================================
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 map-get($spacing, 'md') 0;
+  font-weight: map-get($font-weights, 'bold');
+  line-height: map-get($line-heights, 'tight');
+  color: inherit;
+}
+
+h1 {
+  @include font-size('6xl');
+  margin-bottom: map-get($spacing, 'lg');
+
+  @include respond-to('md') {
+    @include font-size('5xl');
+  }
+
+  @include respond-to('sm') {
+    @include font-size('4xl');
+  }
+}
+
+h2 {
+  @include font-size('5xl');
+  margin-bottom: map-get($spacing, 'lg');
+
+  @include respond-to('md') {
+    @include font-size('4xl');
+  }
+
+  @include respond-to('sm') {
+    @include font-size('3xl');
+  }
+}
+
+h3 {
+  @include font-size('4xl');
+
+  @include respond-to('md') {
+    @include font-size('3xl');
+  }
+
+  @include respond-to('sm') {
+    @include font-size('2xl');
+  }
+}
+
+h4 {
+  @include font-size('3xl');
+
+  @include respond-to('md') {
+    @include font-size('2xl');
+  }
+
+  @include respond-to('sm') {
+    @include font-size('xl');
+  }
+}
+
+h5 {
+  @include font-size('2xl');
+
+  @include respond-to('md') {
+    @include font-size('xl');
+  }
+
+  @include respond-to('sm') {
+    @include font-size('lg');
+  }
+}
+
+h6 {
+  @include font-size('xl');
+
+  @include respond-to('md') {
+    @include font-size('lg');
+  }
+
+  @include respond-to('sm') {
+    @include font-size('base');
+  }
+}
+
+// Paragraphs
+p {
+  margin: 0 0 map-get($spacing, 'md') 0;
+  @include font-size('base');
+  line-height: map-get($line-heights, 'relaxed');
+}
+
+// Lists
+ul,
+ol {
+  margin: 0 0 map-get($spacing, 'md') 0;
+  padding-left: map-get($spacing, 'lg');
+}
+
+li {
+  margin-bottom: map-get($spacing, 'xs');
+  line-height: map-get($line-heights, 'relaxed');
+}
+
+// Blockquotes
+blockquote {
+  margin: map-get($spacing, 'xl') 0;
+  padding: map-get($spacing, 'md') map-get($spacing, 'lg');
+  border-left: 4px solid $color-purple-600;
+  font-style: italic;
+  @include font-size('lg');
+  color: rgba(255, 255, 255, 0.8);
+}
+
+// Code
+code {
+  font-family: $font-family-mono;
+  @include font-size('sm');
+  padding: 2px 6px;
+  background: rgba($color-purple-600, 0.1);
+  border-radius: map-get($radius, 'sm');
+  color: $color-purple-400;
+}
+
+pre {
+  font-family: $font-family-mono;
+  @include font-size('sm');
+  padding: map-get($spacing, 'md');
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: map-get($radius, 'md');
+  overflow-x: auto;
+  margin: map-get($spacing, 'md') 0;
+  @include custom-scrollbar($color-purple-600);
+
+  code {
+    padding: 0;
+    background: none;
+    border-radius: 0;
+  }
+}
+
+// Emphasis
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: map-get($font-weights, 'bold');
+}
+
+// Horizontal Rule
+hr {
+  margin: map-get($spacing, '2xl') 0;
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba($color-purple-600, 0.5),
+    transparent
+  );
+}
+
+// Links
+a {
+  color: $color-purple-400;
+  @include transition(color);
+
+  &:hover {
+    color: $color-purple-300;
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: $color-purple-500;
+  }
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.text-gradient {
+  @include gradient-text-purple;
+}
+
+.text-glow {
+  @include text-glow($color-purple-600);
+}
+
+.text-truncate {
+  @include truncate;
+}
+
+.text-mono {
+  font-family: $font-family-mono;
+}
+
+// Font size utilities
+@each $size, $value in $font-sizes {
+  .text-#{$size} {
+    font-size: $value;
+  }
+}
+
+// Font weight utilities
+@each $weight, $value in $font-weights {
+  .font-#{$weight} {
+    font-weight: $value;
+  }
+}
+
+// Line height utilities
+@each $height, $value in $line-heights {
+  .leading-#{$height} {
+    line-height: $value;
+  }
+}
