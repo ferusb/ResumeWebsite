@@ -1,0 +1,350 @@
+// =============================================================================
+// Card Component Styles
+// =============================================================================
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: map-get($radius, '2xl');
+  padding: map-get($spacing, 'xl');
+  @include transition(all, 'base');
+  @include elevate('md');
+  border: 1px solid rgba($color-purple-600, 0.2);
+  position: relative;
+  overflow: hidden;
+
+  // Card hover effect
+  &:hover {
+    @include elevate('lg');
+    border-color: rgba($color-purple-500, 0.4);
+  }
+
+  // Focus within for keyboard navigation
+  &:focus-within {
+    @include elevate('xl');
+    @include glow($color-purple-600, 0.4);
+  }
+}
+
+// Card variants
+.card-elevated {
+  @extend .card;
+  @include elevate('lg');
+
+  &:hover {
+    @include elevate('xl');
+  }
+}
+
+.card-flat {
+  @extend .card;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.03);
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.card-outlined {
+  @extend .card;
+  background: transparent;
+  border: 2px solid $color-purple-600;
+
+  &:hover {
+    background: rgba($color-purple-600, 0.05);
+    border-color: $color-purple-500;
+  }
+}
+
+.card-glass {
+  @extend .card;
+  @include glass(16px, 0.05);
+
+  &:hover {
+    @include glass(20px, 0.08);
+  }
+}
+
+.card-gradient {
+  @extend .card;
+  background: linear-gradient(
+    135deg,
+    rgba($color-purple-600, 0.2) 0%,
+    rgba($color-purple-800, 0.1) 100%
+  );
+  border: 1px solid rgba($color-purple-500, 0.3);
+
+  &:hover {
+    background: linear-gradient(
+      135deg,
+      rgba($color-purple-600, 0.3) 0%,
+      rgba($color-purple-800, 0.15) 100%
+    );
+  }
+}
+
+// Interactive card
+.card-interactive {
+  @extend .card;
+  @include interactive;
+
+  &:hover {
+    @include glow($color-purple-600, 0.5);
+    transform: translateY(-4px);
+  }
+
+  &:active {
+    transform: translateY(-2px);
+  }
+}
+
+// Card with glow effect
+.card-glow {
+  @extend .card;
+  @include glow($color-purple-600, 0.3);
+
+  &:hover {
+    @include glow($color-purple-500, 0.6);
+  }
+}
+
+// Card header
+.card-header {
+  @include flex-between;
+  margin-bottom: map-get($spacing, 'lg');
+  padding-bottom: map-get($spacing, 'md');
+  border-bottom: 1px solid rgba($color-purple-600, 0.2);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+}
+
+// Card body
+.card-body {
+  @include flex-column;
+  gap: map-get($spacing, 'md');
+}
+
+// Card footer
+.card-footer {
+  @include flex-between;
+  margin-top: map-get($spacing, 'lg');
+  padding-top: map-get($spacing, 'md');
+  border-top: 1px solid rgba($color-purple-600, 0.2);
+}
+
+// Card media
+.card-media {
+  width: 100%;
+  border-radius: map-get($radius, 'lg');
+  overflow: hidden;
+  margin-bottom: map-get($spacing, 'md');
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    @include transition(transform, 'slow');
+  }
+
+  &:hover img {
+    transform: scale(1.05);
+  }
+}
+
+// Card badge
+.card-badge {
+  position: absolute;
+  top: map-get($spacing, 'md');
+  right: map-get($spacing, 'md');
+  @include padding('sm');
+  @include font-size('xs');
+  @include font-weight('semibold');
+  border-radius: map-get($radius, 'full');
+  background: linear-gradient(135deg, $color-purple-600, $color-purple-500);
+  color: white;
+  @include elevate('sm');
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+// Card grid
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: map-get($spacing, 'xl');
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: map-get($spacing, 'lg');
+  }
+
+  @include respond-to('sm') {
+    grid-template-columns: 1fr;
+    gap: map-get($spacing, 'md');
+  }
+}
+
+// Card with expandable content
+.card-expandable {
+  @extend .card;
+
+  .card-content-collapsed {
+    @include line-clamp(3);
+  }
+
+  .card-content-expanded {
+    display: block;
+  }
+
+  .card-expand-button {
+    margin-top: map-get($spacing, 'md');
+    color: $color-purple-400;
+    @include font-size('sm');
+    @include font-weight('medium');
+    cursor: pointer;
+    @include transition(color);
+
+    &:hover {
+      color: $color-purple-300;
+    }
+  }
+}
+
+// Project card specific styles
+.project-card {
+  @extend .card-interactive;
+  @include flex-column;
+  gap: map-get($spacing, 'md');
+
+  .project-title {
+    @include gradient-text-purple;
+    @include font-size('2xl');
+    @include font-weight('bold');
+    margin-bottom: map-get($spacing, 'xs');
+  }
+
+  .project-meta {
+    @include flex-between;
+    @include font-size('sm');
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: map-get($spacing, 'sm');
+  }
+
+  .project-description {
+    line-height: map-get($line-heights, 'relaxed');
+    margin-bottom: map-get($spacing, 'md');
+  }
+
+  .project-technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: map-get($spacing, 'xs');
+    margin-bottom: map-get($spacing, 'md');
+  }
+
+  .tech-tag {
+    @include padding('xs');
+    @include font-size('xs');
+    background: rgba($color-purple-600, 0.2);
+    border: 1px solid rgba($color-purple-500, 0.3);
+    border-radius: map-get($radius, 'base');
+    color: $color-purple-300;
+  }
+}
+
+// Skill card
+.skill-card {
+  @extend .card;
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+  gap: map-get($spacing, 'md');
+
+  .skill-icon {
+    width: 64px;
+    height: 64px;
+    @include flex-center;
+    background: linear-gradient(135deg, $color-purple-600, $color-purple-500);
+    border-radius: map-get($radius, 'full');
+    @include glow($color-purple-600, 0.4);
+    @include font-size('3xl');
+  }
+
+  .skill-name {
+    @include font-size('lg');
+    @include font-weight('semibold');
+  }
+
+  .skill-level {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: map-get($radius, 'full');
+    overflow: hidden;
+
+    .skill-progress {
+      height: 100%;
+      background: linear-gradient(90deg, $color-purple-600, $color-purple-400);
+      border-radius: map-get($radius, 'full');
+      @include transition(width, 'slow');
+    }
+  }
+}
+
+// Metric card
+.metric-card {
+  @extend .card;
+  @include flex-column;
+  align-items: center;
+  text-align: center;
+
+  .metric-value {
+    @include gradient-text-purple;
+    @include font-size('5xl');
+    @include font-weight('extrabold');
+    line-height: 1;
+  }
+
+  .metric-label {
+    @include font-size('sm');
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: map-get($spacing, 'xs');
+  }
+
+  .metric-change {
+    @include font-size('xs');
+    margin-top: map-get($spacing, 'xs');
+
+    &.positive {
+      color: #10b981;
+    }
+
+    &.negative {
+      color: #ef4444;
+    }
+  }
+}
+
+// Responsive card sizing
+@include respond-to('sm') {
+  .card {
+    padding: map-get($spacing, 'lg');
+    border-radius: map-get($radius, 'xl');
+  }
+
+  .card-header,
+  .card-footer {
+    flex-direction: column;
+    gap: map-get($spacing, 'sm');
+    align-items: flex-start;
+  }
+}

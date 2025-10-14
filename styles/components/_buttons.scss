@@ -1,0 +1,232 @@
+// =============================================================================
+// Button Component Styles
+// =============================================================================
+
+.btn {
+  @include interactive;
+  @include transition(all, 'base');
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: map-get($spacing, 'sm');
+  @include padding('md');
+  @include font-size('base');
+  @include font-weight('medium');
+  border-radius: map-get($radius, 'lg');
+  text-decoration: none;
+  border: none;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+
+  // Focus state
+  @include focus-visible;
+
+  // Disabled state
+  &:disabled,
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Loading state
+  &.loading {
+    cursor: wait;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      margin: -8px 0 0 -8px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+  }
+}
+
+// Button variants
+.btn-primary {
+  @extend .btn;
+  @include gradient-purple;
+  color: white;
+  @include elevate('md');
+
+  &:hover {
+    @include elevate('lg');
+    @include glow($color-purple-600, 0.6);
+  }
+
+  &:active {
+    @include elevate('sm');
+  }
+}
+
+.btn-secondary {
+  @extend .btn;
+  background: rgba($color-purple-600, 0.1);
+  color: $color-purple-400;
+  border: 1px solid $color-purple-600;
+
+  &:hover {
+    background: rgba($color-purple-600, 0.2);
+    border-color: $color-purple-500;
+    @include glow($color-purple-600, 0.3);
+  }
+
+  &:active {
+    background: rgba($color-purple-600, 0.3);
+  }
+}
+
+.btn-outline {
+  @extend .btn;
+  background: transparent;
+  color: $color-purple-400;
+  border: 2px solid $color-purple-600;
+
+  &:hover {
+    background: rgba($color-purple-600, 0.1);
+    border-color: $color-purple-500;
+  }
+
+  &:active {
+    background: rgba($color-purple-600, 0.2);
+  }
+}
+
+.btn-ghost {
+  @extend .btn;
+  background: transparent;
+  color: $color-purple-400;
+
+  &:hover {
+    background: rgba($color-purple-600, 0.1);
+  }
+
+  &:active {
+    background: rgba($color-purple-600, 0.2);
+  }
+}
+
+.btn-gradient {
+  @extend .btn;
+  @include gradient-hover($color-purple-600, $color-purple-400);
+  background: linear-gradient(135deg, $color-purple-600, $color-violet-500);
+  color: white;
+  @include elevate('md');
+
+  &:hover {
+    @include elevate('lg');
+  }
+}
+
+// Button sizes
+.btn-sm {
+  padding: map-get($spacing, 'xs') map-get($spacing, 'md');
+  @include font-size('sm');
+  border-radius: map-get($radius, 'base');
+}
+
+.btn-md {
+  padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
+  @include font-size('base');
+  border-radius: map-get($radius, 'lg');
+}
+
+.btn-lg {
+  padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+  @include font-size('lg');
+  border-radius: map-get($radius, 'xl');
+}
+
+.btn-xl {
+  padding: map-get($spacing, 'lg') map-get($spacing, '2xl');
+  @include font-size('xl');
+  border-radius: map-get($radius, '2xl');
+}
+
+// Button with icon
+.btn-icon {
+  padding: map-get($spacing, 'md');
+  aspect-ratio: 1;
+  border-radius: map-get($radius, 'full');
+}
+
+// Button group
+.btn-group {
+  @include flex-center;
+  gap: map-get($spacing, 'sm');
+
+  .btn {
+    flex: 1;
+  }
+
+  &.vertical {
+    @include flex-column;
+  }
+}
+
+// Shimmer effect for special buttons
+.btn-shimmer {
+  @extend .btn-primary;
+  background: linear-gradient(
+    110deg,
+    $color-purple-600 0%,
+    $color-purple-500 20%,
+    $color-purple-600 40%,
+    $color-purple-600 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+// Pulse glow button
+.btn-pulse {
+  @extend .btn-primary;
+  @include pulse-animation($color-purple-600);
+}
+
+// Animations
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+// Responsive adjustments
+@include respond-to('sm') {
+  .btn {
+    padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+    @include font-size('sm');
+  }
+
+  .btn-lg,
+  .btn-xl {
+    padding: map-get($spacing, 'md') map-get($spacing, 'lg');
+    @include font-size('base');
+  }
+}
