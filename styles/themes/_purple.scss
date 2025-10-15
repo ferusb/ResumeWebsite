@@ -1,0 +1,356 @@
+// =============================================================================
+// Purple Theme - Primary Theme Styles
+// =============================================================================
+
+.theme-purple {
+  // Custom scrollbar
+  @include custom-scrollbar($color-purple-600, rgba(0, 0, 0, 0.1));
+
+  // Background layers
+  background: linear-gradient(
+    135deg,
+    #1a1625 0%,
+    #251d35 50%,
+    #1a1625 100%
+  );
+  min-height: 100vh;
+
+  // Text colors
+  color: $color-purple-50;
+
+  // Heading styles
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $color-purple-50;
+
+    &.gradient {
+      @include gradient-text-purple;
+    }
+
+    &.glow {
+      @include text-glow($color-purple-600);
+    }
+  }
+
+  // Link styles
+  a {
+    color: $color-purple-400;
+
+    &:hover {
+      color: $color-purple-300;
+      @include text-glow($color-purple-500, 0.4);
+    }
+
+    &:active {
+      color: $color-purple-500;
+    }
+  }
+
+  // Selection color
+  ::selection {
+    background-color: rgba($color-purple-600, 0.4);
+    color: $color-purple-50;
+  }
+
+  ::-moz-selection {
+    background-color: rgba($color-purple-600, 0.4);
+    color: $color-purple-50;
+  }
+
+  // Focus styles
+  *:focus-visible {
+    outline-color: $color-purple-600;
+  }
+
+  // Code blocks
+  code {
+    background: rgba($color-purple-600, 0.15);
+    color: $color-purple-300;
+    border: 1px solid rgba($color-purple-500, 0.2);
+  }
+
+  pre {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba($color-purple-600, 0.3);
+  }
+
+  // Horizontal rules
+  hr {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba($color-purple-600, 0.6),
+      transparent
+    );
+  }
+
+  // Card overrides
+  .card {
+    background: rgba($color-purple-900, 0.3);
+    border-color: rgba($color-purple-600, 0.25);
+
+    &:hover {
+      background: rgba($color-purple-900, 0.4);
+      border-color: rgba($color-purple-500, 0.4);
+      @include glow($color-purple-600, 0.4);
+    }
+  }
+
+  .card-glass {
+    @include glass(16px, 0.08);
+    background: rgba($color-purple-900, 0.2);
+  }
+
+  // Button overrides
+  .btn-primary {
+    background: linear-gradient(135deg, $color-purple-600, $color-purple-500);
+
+    &:hover {
+      @include glow($color-purple-600, 0.7);
+    }
+  }
+
+  .btn-secondary {
+    background: rgba($color-purple-600, 0.15);
+    border-color: $color-purple-600;
+    color: $color-purple-300;
+
+    &:hover {
+      background: rgba($color-purple-600, 0.25);
+      border-color: $color-purple-500;
+    }
+  }
+
+  // Navigation styles
+  nav {
+    background: rgba($color-purple-900, 0.5);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba($color-purple-600, 0.2);
+
+    a {
+      color: $color-purple-200;
+      @include transition(color);
+
+      &:hover {
+        color: $color-purple-50;
+        @include text-glow($color-purple-600, 0.3);
+      }
+
+      &.active {
+        color: $color-purple-50;
+        @include text-glow($color-purple-600, 0.5);
+        position: relative;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, $color-purple-600, $color-purple-400);
+        }
+      }
+    }
+  }
+
+  // Form elements
+  input,
+  textarea,
+  select {
+    background: rgba($color-purple-900, 0.3);
+    border: 1px solid rgba($color-purple-600, 0.3);
+    color: $color-purple-50;
+    border-radius: map-get($radius, 'lg');
+    padding: map-get($spacing, 'md');
+    @include transition(all);
+
+    &:focus {
+      border-color: $color-purple-600;
+      @include glow($color-purple-600, 0.3);
+      outline: none;
+    }
+
+    &::placeholder {
+      color: rgba($color-purple-200, 0.5);
+    }
+  }
+
+  // Badges and tags
+  .badge,
+  .tag {
+    background: rgba($color-purple-600, 0.2);
+    border: 1px solid rgba($color-purple-500, 0.4);
+    color: $color-purple-300;
+    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
+    border-radius: map-get($radius, 'full');
+    @include font-size('xs');
+    @include font-weight('medium');
+  }
+
+  // Progress bars
+  .progress {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: map-get($radius, 'full');
+    overflow: hidden;
+    height: 8px;
+
+    .progress-bar {
+      background: linear-gradient(90deg, $color-purple-600, $color-purple-400);
+      height: 100%;
+      @include transition(width, 'slow');
+    }
+  }
+
+  // Tooltips
+  .tooltip {
+    background: rgba($color-purple-900, 0.95);
+    border: 1px solid rgba($color-purple-600, 0.5);
+    color: $color-purple-50;
+    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
+    border-radius: map-get($radius, 'md');
+    @include elevate('md');
+    @include font-size('sm');
+  }
+
+  // Modals
+  .modal {
+    background: rgba($color-purple-900, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba($color-purple-600, 0.3);
+    border-radius: map-get($radius, '2xl');
+    @include elevate('2xl');
+    @include glow($color-purple-600, 0.5);
+  }
+
+  .modal-backdrop {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+  }
+
+  // Dividers
+  .divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba($color-purple-600, 0.5),
+      transparent
+    );
+    margin: map-get($spacing, 'xl') 0;
+
+    &.vertical {
+      width: 1px;
+      height: auto;
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba($color-purple-600, 0.5),
+        transparent
+      );
+      margin: 0 map-get($spacing, 'md');
+    }
+
+    &.glow {
+      @include glow($color-purple-600, 0.6);
+    }
+  }
+
+  // Loading spinners
+  .spinner {
+    border: 3px solid rgba($color-purple-600, 0.2);
+    border-top-color: $color-purple-600;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  // Glowing elements
+  .glow-effect {
+    @include glow($color-purple-600, 0.5);
+    @include pulse-animation($color-purple-600);
+  }
+
+  // Glass cards with purple tint
+  .glass-purple {
+    @include glass(16px, 0.05);
+    background: rgba($color-purple-600, 0.1);
+    border: 1px solid rgba($color-purple-500, 0.2);
+  }
+
+  // Gradient backgrounds
+  .gradient-bg {
+    background: linear-gradient(
+      135deg,
+      rgba($color-purple-600, 0.2) 0%,
+      rgba($color-purple-900, 0.1) 50%,
+      rgba($color-purple-600, 0.2) 100%
+    );
+  }
+
+  // Accent elements
+  .accent {
+    color: $color-purple-400;
+
+    &.glow {
+      @include text-glow($color-purple-600);
+    }
+  }
+
+  // Footer
+  footer {
+    background: rgba($color-purple-900, 0.4);
+    border-top: 1px solid rgba($color-purple-600, 0.2);
+    color: $color-purple-200;
+
+    a {
+      color: $color-purple-300;
+
+      &:hover {
+        color: $color-purple-100;
+      }
+    }
+  }
+}
+
+// Animations specific to purple theme
+@keyframes purple-glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba($color-purple-600, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba($color-purple-600, 0.8);
+  }
+}
+
+@keyframes purple-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+// Utility classes for purple theme
+.theme-purple {
+  .purple-glow {
+    @include glow($color-purple-600, 0.5);
+  }
+
+  .purple-text {
+    color: $color-purple-400;
+  }
+
+  .purple-gradient {
+    @include gradient-text-purple;
+  }
+
+  .purple-bg {
+    background: linear-gradient(135deg, $color-purple-600, $color-purple-500);
+  }
+}
