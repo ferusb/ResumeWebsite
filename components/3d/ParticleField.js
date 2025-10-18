@@ -8,35 +8,22 @@ export default function ParticleField() {
 
   const particlesPosition = useMemo(() => {
     const positions = new Float32Array(particleCount * 3);
-    
+
     for (let i = 0; i < particleCount; i++) {
-      const i3 = i * 3;
-      positions[i3] = (Math.random() - 0.5) * 30;
-      positions[i3 + 1] = (Math.random() - 0.5) * 30;
-      positions[i3 + 2] = (Math.random() - 0.5) * 30;
+      const x = (Math.random() - 0.5) * 20;
+      const y = (Math.random() - 0.5) * 20;
+      const z = (Math.random() - 0.5) * 20;
+
+      positions.set([x, y, z], i * 3);
     }
-    
+
     return positions;
   }, []);
 
   useFrame((state) => {
-    const time = state.clock.getElapsedTime();
-    
     if (points.current) {
-      points.current.rotation.y = time * 0.05;
-      points.current.rotation.x = time * 0.03;
-      
-      const positions = points.current.geometry.attributes.position.array;
-      
-      for (let i = 0; i < particleCount; i++) {
-        const i3 = i * 3;
-        const x = positions[i3];
-        const z = positions[i3 + 2];
-        
-        positions[i3 + 1] += Math.sin(time + x) * 0.001;
-      }
-      
-      points.current.geometry.attributes.position.needsUpdate = true;
+      points.current.rotation.y = state.clock.elapsedTime * 0.05;
+      points.current.rotation.x = state.clock.elapsedTime * 0.02;
     }
   });
 
@@ -52,10 +39,10 @@ export default function ParticleField() {
       </bufferGeometry>
       <pointsMaterial
         size={0.05}
-        color="#60a5fa"
-        sizeAttenuation
-        transparent
-        opacity={0.8}
+        color="#8b5cf6"
+        sizeAttenuation={true}
+        transparent={true}
+        opacity={0.6}
         blending={THREE.AdditiveBlending}
       />
     </points>
