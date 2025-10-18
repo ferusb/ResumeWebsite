@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { Typography, TypographyProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useStyleContext } from '../../contexts/StyleContext';
 
 interface GradientTypographyProps extends Omit<TypographyProps, 'color'> {
   gradient?: boolean;

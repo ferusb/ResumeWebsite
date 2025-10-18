@@ -1,12 +1,11 @@
 import React, { memo, useState, useCallback } from 'react';
-import { AppBar, Toolbar, Box, IconButton, Drawer, List, ListItem, ListItemText, Container, Stack } from '@mui/material';
+import { AppBar, Toolbar, Box, IconButton, Drawer, List, ListItem, ListItemText, Container } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import { styled, alpha } from '@mui/material/styles';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
 import { GradientTypography } from '../atoms/GradientTypography';
-import { useMediaQuery } from '../../hooks/useMediaQuery';
 import { NavigationItem } from '../../types/components.types';
 
 const navItems: NavigationItem[] = [
@@ -49,7 +48,6 @@ const ActiveIndicator = styled(motion.div)(({ theme }) => ({
 export const NavigationBar = memo(() => {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const isMobile = useMediaQuery('xs');
 
   const handleDrawerToggle = useCallback(() => {
     setMobileOpen((prev) => !prev);

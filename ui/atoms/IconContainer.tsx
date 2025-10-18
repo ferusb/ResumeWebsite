@@ -23,7 +23,7 @@ const radiusMap = {
   square: '4px',
 };
 
-const StyledBox = styled(motion(Box))<{
+const StyledBox = styled(motion(Box) as any)<{
   containerSize: number;
   variant: string;
   colorScheme: string;

@@ -9,7 +9,7 @@ interface TechBadgeProps extends Omit<ChipProps, 'color'> {
   glowing?: boolean;
 }
 
-const AnimatedChip = styled(motion(Chip))<{ colorScheme?: string; glowing?: boolean }>(
+const AnimatedChip = styled(motion(Chip) as any)<{ colorScheme?: string; glowing?: boolean }>(
   ({ theme, colorScheme = 'primary', glowing }) => {
     const color = colorScheme === 'accent'
       ? theme.palette.accent?.main || theme.palette.primary.main

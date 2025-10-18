@@ -9,7 +9,7 @@ interface StyledCardProps extends Omit<MuiCardProps, 'variant'> {
   glowEffect?: boolean;
 }
 
-const AnimatedCard = styled(motion(MuiCard))<{ interactive?: boolean; glowEffect?: boolean }>(
+const AnimatedCard = styled(motion(MuiCard) as any)<{ interactive?: boolean; glowEffect?: boolean }>(
   ({ theme, interactive, glowEffect }) => ({
     transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
     ...(interactive && {

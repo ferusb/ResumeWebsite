@@ -10,7 +10,7 @@ interface AnimatedButtonProps extends Omit<ButtonProps, 'color'> {
   endIcon?: ReactNode;
 }
 
-const MotionButton = styled(motion(Button))<{ colorScheme?: string }>(
+const MotionButton = styled(motion(Button) as any)<{ colorScheme?: string }>(
   ({ theme, colorScheme = 'primary' }) => {
     const color = colorScheme === 'accent'
       ? theme.palette.accent?.main || theme.palette.primary.main
