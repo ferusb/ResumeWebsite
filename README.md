@@ -5,7 +5,6 @@
 ![Next.js](https://img.shields.io/badge/Next.js-15.5-black?style=for-the-badge&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.2-61dafb?style=for-the-badge&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178c6?style=for-the-badge&logo=typescript)
-![Three.js](https://img.shields.io/badge/Three.js-r159-black?style=for-the-badge&logo=three.js)
 
 **Full-stack Software Engineer specializing in React, TypeScript, and building scalable enterprise applications**
 
@@ -42,8 +41,8 @@ I'm a **Software Engineer III** with **8+ years of experience** building high-pe
 
 ### Frontend Development
 **JavaScript/TypeScript**: React.js, Next.js, Redux.js, GraphQL, Micro Frontends, AngularJS
-**Styling & UI**: Tailwind CSS, Sass, AG Grid, Figma, UX Design
-**Animation & 3D**: Three.js, Framer Motion, React Three Fiber
+**Styling & UI**: Sass, AG Grid, Figma, UX Design
+**Animation**: Framer Motion
 **Testing**: Jest, Cypress (200% coverage increase, 70% faster runtime)
 **State Management**: Redux.js, Apollo Client, Context API
 
@@ -72,13 +71,11 @@ I'm a **Software Engineer III** with **8+ years of experience** building high-pe
 - 🌲 **Forest Mode** - Nature-inspired green theme
 - 💾 LocalStorage theme persistence
 
-### 🎭 **3D Animations & Effects**
-- 🌟 Interactive 3D scene with Three.js
-- ⭐ Animated particle system (2000+ particles)
-- 🔮 Rotating and morphing 3D sphere
+### 🎭 **Animations & Effects**
 - 🎪 Smooth page transitions with Framer Motion
 - 🎨 Scroll-triggered animations
 - ✨ Hover effects and micro-interactions
+- 🌈 Animated gradient backgrounds
 
 ### 📱 **Responsive Design**
 - 📱 Mobile-first approach (320px - 1440px+)
@@ -118,8 +115,7 @@ This portfolio showcases modern web development practices and technologies:
 ### Core Technologies
 - **React.js 19.2** & **Next.js 15.5** - Latest React features with server-side rendering
 - **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first styling
-- **Three.js + React Three Fiber** - Interactive 3D graphics
+- **Sass** - Powerful CSS preprocessing
 - **Framer Motion** - Smooth animations and transitions
 
 ### Features Demonstrated
@@ -194,7 +190,7 @@ yarn start
 portfolio/
 ├── components/          # React components
 │   ├── NewHeader.js     # Navigation header
-│   ├── HeroSection.js   # Landing section with 3D background
+│   ├── HeroSection.js   # Landing section with animated background
 │   ├── SkillsSection.js # Skills & technologies display
 │   ├── ExperienceSection.js # Career timeline
 │   ├── ProjectsSection.js   # GitHub projects gallery
@@ -349,9 +345,8 @@ This project is open source and available under the [MIT License](LICENSE).
 ## 🙏 Acknowledgments
 
 - [Next.js](https://nextjs.org/) - React Framework
-- [Tailwind CSS](https://tailwindcss.com/) - CSS Framework
-- [Three.js](https://threejs.org/) - 3D Graphics
 - [Framer Motion](https://www.framer.com/motion/) - Animation Library
+- [Material-UI](https://mui.com/) - React Component Library
 - [Vercel](https://vercel.com/) - Deployment Platform
 
 ---
