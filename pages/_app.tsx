@@ -1,11 +1,21 @@
 import type { AppProps } from 'next/app';
-import { StyleProvider } from '../contexts/StyleContext';
+import { StyleProvider, useStyleContext } from '../contexts/StyleContext';
 import '../styles/main.scss';
 
-function PortfolioApplication({ Component, pageProps }: AppProps) {
+function AppContent({ Component, pageProps }: AppProps) {
+  const { activeTheme } = useStyleContext();
+
+  return (
+    <div className={`theme-${activeTheme}`}>
+      <Component {...pageProps} />
+    </div>
+  );
+}
+
+function PortfolioApplication(props: AppProps) {
   return (
     <StyleProvider initialTheme="purple">
-      <Component {...pageProps} />
+      <AppContent {...props} />
     </StyleProvider>
   );
 }
