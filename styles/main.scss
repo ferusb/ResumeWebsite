@@ -4,27 +4,25 @@
 // =============================================================================
 
 // 1. CONFIGURATION & UTILITIES
-// Import variables first - they're used by everything else
-@import 'utils/variables';
-
-// Import mixins second - they use variables
-@import 'utils/mixins';
+// Use variables and mixins with namespaces
+@use 'utils/variables' as *;
+@use 'utils/mixins' as *;
 
 // 2. BASE STYLES
 // Reset and normalize across browsers
-@import 'base/reset';
+@use 'base/reset';
 
 // Typography foundation
-@import 'base/typography';
+@use 'base/typography';
 
 // 3. COMPONENTS
 // Reusable component styles
-@import 'components/buttons';
-@import 'components/cards';
+@use 'components/buttons';
+@use 'components/cards';
 
 // 4. THEMES
 // Theme-specific overrides and styles
-@import 'themes/purple';
+@use 'themes/purple';
 
 // =============================================================================
 // GLOBAL UTILITY CLASSES

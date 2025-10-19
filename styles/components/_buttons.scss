@@ -2,6 +2,9 @@
 // Button Component Styles
 // =============================================================================
 
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
 .btn {
   @include interactive;
   @include transition(all, 'base');

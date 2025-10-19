@@ -2,6 +2,9 @@
 // Purple Theme - Primary Theme Styles
 // =============================================================================
 
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
 .theme-purple {
   // Custom scrollbar
   @include custom-scrollbar($color-purple-600, rgba(0, 0, 0, 0.1));

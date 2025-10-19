@@ -2,6 +2,8 @@
 // SCSS Mixins - Reusable Patterns
 // =============================================================================
 
+@use 'variables' as *;
+
 // Responsive Breakpoints
 @mixin respond-to($breakpoint) {
   @if map-has-key($breakpoints, $breakpoint) {

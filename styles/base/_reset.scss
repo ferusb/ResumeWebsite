@@ -2,6 +2,9 @@
 // CSS Reset & Normalize
 // =============================================================================
 
+@use '../utils/variables' as *;
+@use '../utils/mixins' as *;
+
 *,
 *::before,
 *::after {
