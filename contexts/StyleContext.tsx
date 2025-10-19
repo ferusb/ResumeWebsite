@@ -59,7 +59,10 @@ export const StyleProvider: React.FC<StyleProviderProps> = ({
   const cycleTheme = useCallback(() => {
     const currentIndex = availableThemes.indexOf(activeTheme);
     const nextIndex = (currentIndex + 1) % availableThemes.length;
-    switchTheme(availableThemes[nextIndex]);
+    const nextTheme = availableThemes[nextIndex];
+    if (nextTheme) {
+      switchTheme(nextTheme);
+    }
   }, [activeTheme, availableThemes, switchTheme]);
 
   const contextValue = useMemo<StyleContextValue>(
