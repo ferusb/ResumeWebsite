@@ -1,8 +1,5 @@
 import React, { createContext, useContext, useState, useMemo, useCallback, ReactNode } from 'react';
-import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeMode, ThemeConfiguration } from '../types/theme.types';
-import { generateMuiTheme } from '../lib/styleEngine';
 import { themes } from '../lib/config';
 
 interface StyleContextValue {
@@ -42,11 +39,6 @@ export const StyleProvider: React.FC<StyleProviderProps> = ({
     [activeTheme]
   );
 
-  const muiTheme = useMemo(
-    () => generateMuiTheme(themeConfig),
-    [themeConfig]
-  );
-
   const switchTheme = useCallback((theme: ThemeMode) => {
     if (themes[theme]) {
       setActiveTheme(theme);
@@ -78,10 +70,7 @@ export const StyleProvider: React.FC<StyleProviderProps> = ({
 
   return (
     <StyleContext.Provider value={contextValue}>
-      <MuiThemeProvider theme={muiTheme}>
-        <CssBaseline />
-        {children}
-      </MuiThemeProvider>
+      {children}
     </StyleContext.Provider>
   );
 };
