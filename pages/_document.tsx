@@ -2,12 +2,12 @@ import Document, { Html, Head, Main, NextScript, DocumentContext, DocumentInitia
 import type { ReactElement } from 'react';
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
+  static override async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx);
     return initialProps;
   }
 
-  render(): ReactElement {
+  override render(): ReactElement {
     return (
       <Html lang="en">
         <Head>
