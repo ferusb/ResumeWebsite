@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import { StyleProvider, useStyleContext } from '../contexts/StyleContext';
+import '../styles/globals.css';
 import '../styles/main.scss';
 
 function AppContent({ Component, pageProps }: AppProps) {
