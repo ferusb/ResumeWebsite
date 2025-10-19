@@ -2,6 +2,7 @@
 // Button Component Styles
 // =============================================================================
 
+@use 'sass:map';
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
@@ -11,11 +12,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: map-get($spacing, 'sm');
+  gap: map.get($spacing, 'sm');
   @include padding('md');
   @include font-size('base');
   @include font-weight('medium');
-  border-radius: map-get($radius, 'lg');
+  border-radius: map.get($radius, 'lg');
   text-decoration: none;
   border: none;
   outline: none;
@@ -133,40 +134,40 @@
 
 // Button sizes
 .btn-sm {
-  padding: map-get($spacing, 'xs') map-get($spacing, 'md');
+  padding: map.get($spacing, 'xs') map.get($spacing, 'md');
   @include font-size('sm');
-  border-radius: map-get($radius, 'base');
+  border-radius: map.get($radius, 'base');
 }
 
 .btn-md {
-  padding: map-get($spacing, 'sm') map-get($spacing, 'lg');
+  padding: map.get($spacing, 'sm') map.get($spacing, 'lg');
   @include font-size('base');
-  border-radius: map-get($radius, 'lg');
+  border-radius: map.get($radius, 'lg');
 }
 
 .btn-lg {
-  padding: map-get($spacing, 'md') map-get($spacing, 'xl');
+  padding: map.get($spacing, 'md') map.get($spacing, 'xl');
   @include font-size('lg');
-  border-radius: map-get($radius, 'xl');
+  border-radius: map.get($radius, 'xl');
 }
 
 .btn-xl {
-  padding: map-get($spacing, 'lg') map-get($spacing, '2xl');
+  padding: map.get($spacing, 'lg') map.get($spacing, '2xl');
   @include font-size('xl');
-  border-radius: map-get($radius, '2xl');
+  border-radius: map.get($radius, '2xl');
 }
 
 // Button with icon
 .btn-icon {
-  padding: map-get($spacing, 'md');
+  padding: map.get($spacing, 'md');
   aspect-ratio: 1;
-  border-radius: map-get($radius, 'full');
+  border-radius: map.get($radius, 'full');
 }
 
 // Button group
 .btn-group {
   @include flex-center;
-  gap: map-get($spacing, 'sm');
+  gap: map.get($spacing, 'sm');
 
   .btn {
     flex: 1;
@@ -223,13 +224,13 @@
 // Responsive adjustments
 @include respond-to('sm') {
   .btn {
-    padding: map-get($spacing, 'sm') map-get($spacing, 'md');
+    padding: map.get($spacing, 'sm') map.get($spacing, 'md');
     @include font-size('sm');
   }
 
   .btn-lg,
   .btn-xl {
-    padding: map-get($spacing, 'md') map-get($spacing, 'lg');
+    padding: map.get($spacing, 'md') map.get($spacing, 'lg');
     @include font-size('base');
   }
 }

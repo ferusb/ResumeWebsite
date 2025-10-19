@@ -2,6 +2,7 @@
 // Base Typography Styles
 // =============================================================================
 
+@use 'sass:map';
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
@@ -12,15 +13,15 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 map-get($spacing, 'md') 0;
-  font-weight: map-get($font-weights, 'bold');
-  line-height: map-get($line-heights, 'tight');
+  margin: 0 0 map.get($spacing, 'md') 0;
+  font-weight: map.get($font-weights, 'bold');
+  line-height: map.get($line-heights, 'tight');
   color: inherit;
 }
 
 h1 {
   @include font-size('6xl');
-  margin-bottom: map-get($spacing, 'lg');
+  margin-bottom: map.get($spacing, 'lg');
 
   @include respond-to('md') {
     @include font-size('5xl');
@@ -33,7 +34,7 @@ h1 {
 
 h2 {
   @include font-size('5xl');
-  margin-bottom: map-get($spacing, 'lg');
+  margin-bottom: map.get($spacing, 'lg');
 
   @include respond-to('md') {
     @include font-size('4xl');
@@ -94,27 +95,27 @@ h6 {
 
 // Paragraphs
 p {
-  margin: 0 0 map-get($spacing, 'md') 0;
+  margin: 0 0 map.get($spacing, 'md') 0;
   @include font-size('base');
-  line-height: map-get($line-heights, 'relaxed');
+  line-height: map.get($line-heights, 'relaxed');
 }
 
 // Lists
 ul,
 ol {
-  margin: 0 0 map-get($spacing, 'md') 0;
-  padding-left: map-get($spacing, 'lg');
+  margin: 0 0 map.get($spacing, 'md') 0;
+  padding-left: map.get($spacing, 'lg');
 }
 
 li {
-  margin-bottom: map-get($spacing, 'xs');
-  line-height: map-get($line-heights, 'relaxed');
+  margin-bottom: map.get($spacing, 'xs');
+  line-height: map.get($line-heights, 'relaxed');
 }
 
 // Blockquotes
 blockquote {
-  margin: map-get($spacing, 'xl') 0;
-  padding: map-get($spacing, 'md') map-get($spacing, 'lg');
+  margin: map.get($spacing, 'xl') 0;
+  padding: map.get($spacing, 'md') map.get($spacing, 'lg');
   border-left: 4px solid $color-purple-600;
   font-style: italic;
   @include font-size('lg');
@@ -127,18 +128,18 @@ code {
   @include font-size('sm');
   padding: 2px 6px;
   background: rgba($color-purple-600, 0.1);
-  border-radius: map-get($radius, 'sm');
+  border-radius: map.get($radius, 'sm');
   color: $color-purple-400;
 }
 
 pre {
   font-family: $font-family-mono;
   @include font-size('sm');
-  padding: map-get($spacing, 'md');
+  padding: map.get($spacing, 'md');
   background: rgba(0, 0, 0, 0.3);
-  border-radius: map-get($radius, 'md');
+  border-radius: map.get($radius, 'md');
   overflow-x: auto;
-  margin: map-get($spacing, 'md') 0;
+  margin: map.get($spacing, 'md') 0;
   @include custom-scrollbar($color-purple-600);
 
   code {
@@ -154,12 +155,12 @@ em {
 }
 
 strong {
-  font-weight: map-get($font-weights, 'bold');
+  font-weight: map.get($font-weights, 'bold');
 }
 
 // Horizontal Rule
 hr {
-  margin: map-get($spacing, '2xl') 0;
+  margin: map.get($spacing, '2xl') 0;
   border: none;
   height: 1px;
   background: linear-gradient(

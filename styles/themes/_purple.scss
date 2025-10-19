@@ -2,6 +2,7 @@
 // Purple Theme - Primary Theme Styles
 // =============================================================================
 
+@use 'sass:map';
 @use '../utils/variables' as *;
 @use '../utils/mixins' as *;
 
@@ -168,8 +169,8 @@
     background: rgba($color-purple-900, 0.3);
     border: 1px solid rgba($color-purple-600, 0.3);
     color: $color-purple-50;
-    border-radius: map-get($radius, 'lg');
-    padding: map-get($spacing, 'md');
+    border-radius: map.get($radius, 'lg');
+    padding: map.get($spacing, 'md');
     @include transition(all);
 
     &:focus {
@@ -189,8 +190,8 @@
     background: rgba($color-purple-600, 0.2);
     border: 1px solid rgba($color-purple-500, 0.4);
     color: $color-purple-300;
-    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
-    border-radius: map-get($radius, 'full');
+    padding: map.get($spacing, 'xs') map.get($spacing, 'sm');
+    border-radius: map.get($radius, 'full');
     @include font-size('xs');
     @include font-weight('medium');
   }
@@ -198,7 +199,7 @@
   // Progress bars
   .progress {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: map-get($radius, 'full');
+    border-radius: map.get($radius, 'full');
     overflow: hidden;
     height: 8px;
 
@@ -214,8 +215,8 @@
     background: rgba($color-purple-900, 0.95);
     border: 1px solid rgba($color-purple-600, 0.5);
     color: $color-purple-50;
-    padding: map-get($spacing, 'xs') map-get($spacing, 'sm');
-    border-radius: map-get($radius, 'md');
+    padding: map.get($spacing, 'xs') map.get($spacing, 'sm');
+    border-radius: map.get($radius, 'md');
     @include elevate('md');
     @include font-size('sm');
   }
@@ -225,7 +226,7 @@
     background: rgba($color-purple-900, 0.4);
     backdrop-filter: blur(20px);
     border: 1px solid rgba($color-purple-600, 0.3);
-    border-radius: map-get($radius, '2xl');
+    border-radius: map.get($radius, '2xl');
     @include elevate('2xl');
     @include glow($color-purple-600, 0.5);
   }
@@ -244,7 +245,7 @@
       rgba($color-purple-600, 0.5),
       transparent
     );
-    margin: map-get($spacing, 'xl') 0;
+    margin: map.get($spacing, 'xl') 0;
 
     &.vertical {
       width: 1px;
@@ -255,7 +256,7 @@
         rgba($color-purple-600, 0.5),
         transparent
       );
-      margin: 0 map-get($spacing, 'md');
+      margin: 0 map.get($spacing, 'md');
     }
 
     &.glow {

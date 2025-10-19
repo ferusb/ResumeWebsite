@@ -2,6 +2,8 @@
 // SCSS Variables & Configuration
 // =============================================================================
 
+@use 'sass:map';
+
 // Breakpoints
 $breakpoints: (
   'xs': 0px,

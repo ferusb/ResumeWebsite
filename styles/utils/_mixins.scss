@@ -2,12 +2,15 @@
 // SCSS Mixins - Reusable Patterns
 // =============================================================================
 
+@use 'sass:map';
+@use 'sass:color';
+@use 'sass:string';
 @use 'variables' as *;
 
 // Responsive Breakpoints
 @mixin respond-to($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    $value: map-get($breakpoints, $breakpoint);
+  @if map.has-key($breakpoints, $breakpoint) {
+    $value: map.get($breakpoints, $breakpoint);
     @media (min-width: $value) {
       @content;
     }
@@ -36,14 +39,14 @@
 
 // Typography
 @mixin font-size($size) {
-  @if map-has-key($font-sizes, $size) {
-    font-size: map-get($font-sizes, $size);
+  @if map.has-key($font-sizes, $size) {
+    font-size: map.get($font-sizes, $size);
   }
 }
 
 @mixin font-weight($weight) {
-  @if map-has-key($font-weights, $weight) {
-    font-weight: map-get($font-weights, $weight);
+  @if map.has-key($font-weights, $weight) {
+    font-weight: map.get($font-weights, $weight);
   }
 }
 
@@ -117,8 +120,8 @@
 
 // Transitions
 @mixin transition($properties: all, $duration: 'base', $timing: 'ease') {
-  $duration-value: map-get($transition-durations, $duration);
-  $timing-value: map-get($transition-timings, $timing);
+  $duration-value: map.get($transition-durations, $duration);
+  $timing-value: map.get($transition-timings, $timing);
   transition: $properties $duration-value $timing-value;
 }
 
@@ -140,14 +143,14 @@
 
 // Spacing
 @mixin padding($size) {
-  @if map-has-key($spacing, $size) {
-    padding: map-get($spacing, $size);
+  @if map.has-key($spacing, $size) {
+    padding: map.get($spacing, $size);
   }
 }
 
 @mixin margin($size) {
-  @if map-has-key($spacing, $size) {
-    margin: map-get($spacing, $size);
+  @if map.has-key($spacing, $size) {
+    margin: map.get($spacing, $size);
   }
 }
 
@@ -187,19 +190,20 @@
 
   &::-webkit-scrollbar-thumb {
     background: $thumb-color;
-    border-radius: map-get($radius, 'base');
+    border-radius: map.get($radius, 'base');
 
     &:hover {
-      background: darken($thumb-color, 10%);
+      background: color.scale($thumb-color, $lightness: -10%);
     }
   }
 }
 
 // Animations
 @mixin pulse-animation($color, $duration: 2s) {
-  animation: pulse-glow-#{unique-id()} $duration ease-in-out infinite;
+  $unique: string.unique-id();
+  animation: pulse-glow-#{$unique} $duration ease-in-out infinite;
 
-  @keyframes pulse-glow-#{unique-id()} {
+  @keyframes pulse-glow-#{$unique} {
     0%, 100% {
       box-shadow: 0 0 20px rgba($color, 0.5);
     }
@@ -231,8 +235,8 @@
 
 // Z-Index Management
 @mixin z-index($layer) {
-  @if map-has-key($z-layers, $layer) {
-    z-index: map-get($z-layers, $layer);
+  @if map.has-key($z-layers, $layer) {
+    z-index: map.get($z-layers, $layer);
   }
 }
 
@@ -242,11 +246,11 @@
   max-width: $max-width;
   margin-left: auto;
   margin-right: auto;
-  padding-left: map-get($spacing, 'md');
-  padding-right: map-get($spacing, 'md');
+  padding-left: map.get($spacing, 'md');
+  padding-right: map.get($spacing, 'md');
 
   @include respond-to('lg') {
-    padding-left: map-get($spacing, 'lg');
-    padding-right: map-get($spacing, 'lg');
+    padding-left: map.get($spacing, 'lg');
+    padding-right: map.get($spacing, 'lg');
   }
 }
