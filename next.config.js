@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Removed 'output: export' for better dev experience with animations
+  output: 'export',
   reactStrictMode: true,
   images: {
     remotePatterns: [
