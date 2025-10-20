@@ -26,9 +26,9 @@ const ContactSection: FC = () => {
   };
 
   return (
-    <section ref={ref} id="contact" className="py-20" style={{ backgroundColor: 'var(--color-background)' }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+    <section ref={ref} id="contact" style={{ paddingTop: '5rem', paddingBottom: '5rem', backgroundColor: 'var(--color-background)' }}>
+      <div style={{ maxWidth: '1280px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
+        <div style={{ maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
           {/* Email Info Card */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -37,29 +37,54 @@ const ContactSection: FC = () => {
             style={{
               background: `linear-gradient(135deg, var(--color-primary), var(--color-secondary))`,
               boxShadow: 'var(--style-glow)',
+              padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+              borderRadius: '1rem',
+              color: 'white',
+              marginBottom: '2rem',
+              textAlign: 'center',
             }}
-            className="p-6 sm:p-8 lg:p-10 rounded-2xl text-white mb-8 text-center"
           >
-            <h3 
-              style={{ fontWeight: 'var(--style-headingWeight)' }}
-              className="text-2xl sm:text-3xl lg:text-4xl mb-4"
+            <h3
+              style={{
+                fontWeight: 'var(--style-headingWeight)',
+                fontSize: 'clamp(1.5rem, 4vw, 2.25rem)',
+                marginBottom: '1rem',
+              }}
             >
               Let's Connect!
             </h3>
-            <p className="mb-6 opacity-90 text-base sm:text-lg">
+            <p style={{
+              marginBottom: '1.5rem',
+              opacity: 0.9,
+              fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
+            }}>
               I'm always open to discussing new projects, creative ideas, or opportunities.
             </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-              <div className="flex items-center gap-3">
-                <HiMail className="w-6 h-6 sm:w-7 sm:h-7" />
-                <a href={`mailto:${siteConfig.personal.email}`} className="hover:underline text-lg sm:text-xl font-medium">
+
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 'clamp(1rem, 3vw, 2rem)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <HiMail style={{ width: 'clamp(1.5rem, 3vw, 1.75rem)', height: 'clamp(1.5rem, 3vw, 1.75rem)' }} />
+                <a
+                  href={`mailto:${siteConfig.personal.email}`}
+                  style={{
+                    fontSize: 'clamp(1.125rem, 3vw, 1.25rem)',
+                    fontWeight: 500,
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                  onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+                >
                   {siteConfig.personal.email}
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <span className="text-2xl sm:text-3xl">📍</span>
-                <span className="text-lg sm:text-xl">{siteConfig.personal.location}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ fontSize: 'clamp(1.5rem, 3vw, 1.875rem)' }}>📍</span>
+                <span style={{ fontSize: 'clamp(1.125rem, 3vw, 1.25rem)' }}>{siteConfig.personal.location}</span>
               </div>
             </div>
           </motion.div>
@@ -70,16 +95,22 @@ const ContactSection: FC = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.4 }}
           >
-            <h3 
-              style={{ 
+            <h3
+              style={{
                 color: 'var(--color-text)',
                 fontWeight: 'var(--style-headingWeight)',
+                fontSize: 'clamp(1.5rem, 4vw, 1.875rem)',
+                marginBottom: '1.5rem',
+                textAlign: 'center',
               }}
-              className="text-2xl sm:text-3xl mb-6 text-center"
             >
               Follow Me On Social Media
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+              gap: 'clamp(1rem, 3vw, 1.5rem)',
+            }}>
               {Object.entries(siteConfig.social).map(([platform, url]) => {
                 const Icon = socialIcons[platform];
                 if (!Icon || !url) return null;
@@ -92,6 +123,13 @@ const ContactSection: FC = () => {
                     whileHover={{ scale: 1.05, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                     style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      gap: 'clamp(0.75rem, 2vw, 1rem)',
+                      padding: 'clamp(1.5rem, 3vw, 2rem)',
+                      borderRadius: '1rem',
+                      transition: 'all 0.3s',
                       backgroundColor: 'var(--color-surface)',
                       border: 'var(--style-cardBorder)',
                       boxShadow: 'var(--style-shadow)',
@@ -106,15 +144,22 @@ const ContactSection: FC = () => {
                       e.currentTarget.style.color = 'var(--color-text)';
                       e.currentTarget.style.boxShadow = 'var(--style-shadow)';
                     }}
-                    className="flex flex-col items-center gap-3 sm:gap-4 p-6 sm:p-8 rounded-2xl transition-all"
                   >
-                    <Icon 
-                      style={{ color: 'inherit' }}
-                      className="w-10 h-10 sm:w-12 sm:h-12 transition-colors" 
+                    <Icon
+                      style={{
+                        color: 'inherit',
+                        width: 'clamp(2.5rem, 5vw, 3rem)',
+                        height: 'clamp(2.5rem, 5vw, 3rem)',
+                        transition: 'color 0.3s',
+                      }}
                     />
-                    <span 
-                      style={{ color: 'inherit', fontWeight: 'var(--style-headingWeight)' }}
-                      className="text-sm sm:text-base capitalize"
+                    <span
+                      style={{
+                        color: 'inherit',
+                        fontWeight: 'var(--style-headingWeight)',
+                        fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                        textTransform: 'capitalize',
+                      }}
                     >
                       {platform}
                     </span>

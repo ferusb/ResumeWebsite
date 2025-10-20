@@ -6,7 +6,15 @@ import AnimatedSphere from './AnimatedSphere';
 
 export default function Scene3D() {
   return (
-    <div className="absolute inset-0 w-full h-full">
+    <div style={{
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    }}>
       <Canvas>
         <PerspectiveCamera makeDefault position={[0, 0, 8]} />
         <ambientLight intensity={0.5} />

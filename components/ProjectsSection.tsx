@@ -38,28 +38,32 @@ const ProjectsSection: FC = () => {
     : projects.filter(p => p.language?.toLowerCase() === filter.toLowerCase());
 
   return (
-    <section ref={ref} id="projects" className="py-20" style={{ backgroundColor: 'var(--color-surface)' }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} id="projects" style={{ paddingTop: '5rem', paddingBottom: '5rem', backgroundColor: 'var(--color-surface)' }}>
+      <div style={{ maxWidth: '1280px', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '1rem', paddingRight: '1rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
-          <h2 style={{ fontWeight: 'var(--style-headingWeight)' }} className="text-4xl md:text-5xl mb-4">
+          <h2 style={{ fontWeight: 'var(--style-headingWeight)', fontSize: 'clamp(2.25rem, 5vw, 3rem)', marginBottom: '1rem' }}>
             <span
-              className="bg-clip-text text-transparent"
-              style={{ backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary))` }}
+              style={{
+                backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                color: 'transparent',
+              }}
             >
               My Projects
             </span>
           </h2>
-          <p style={{ color: 'var(--color-textSecondary)' }} className="text-xl max-w-2xl mx-auto">
+          <p style={{ color: 'var(--color-textSecondary)', fontSize: '1.25rem', maxWidth: '42rem', marginLeft: 'auto', marginRight: 'auto' }}>
             {projects.length} featured projects sorted by ⭐ stars
           </p>
         </motion.div>
 
         {/* Filter Tags - Sadece Diller */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
+        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 'clamp(0.5rem, 1.5vw, 0.75rem)', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
           {allLanguages.map((lang) => (
             <motion.button
               key={lang}
@@ -74,8 +78,11 @@ const ProjectsSection: FC = () => {
                 boxShadow: filter === lang ? 'var(--style-glow)' : 'var(--style-shadow)',
                 border: filter === lang ? 'none' : 'var(--style-cardBorder)',
                 fontWeight: filter === lang ? 'var(--style-headingWeight)' : 'var(--style-fontWeight)',
+                padding: 'clamp(0.375rem, 1.5vw, 0.5rem) clamp(0.75rem, 2vw, 1rem)',
+                borderRadius: '9999px',
+                fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
+                transition: 'all 0.3s',
               }}
-              className="px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm transition-all"
             >
               {lang === 'all' ? '🌐 All' : `💻 ${lang}`}
             </motion.button>
@@ -85,7 +92,11 @@ const ProjectsSection: FC = () => {
         {/* Projects Grid */}
         <motion.div
           layout
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+            gap: '2rem',
+          }}
         >
           <AnimatePresence>
             {filteredProjects.map((project, index) => (
@@ -98,17 +109,29 @@ const ProjectsSection: FC = () => {
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -10 }}
                 onClick={() => setSelectedProject(project)}
-                className="group relative cursor-pointer"
+                style={{ position: 'relative', cursor: 'pointer' }}
+                onMouseEnter={(e) => {
+                  const overlay = e.currentTarget.querySelector('.hover-overlay');
+                  if (overlay) overlay.style.opacity = '1';
+                }}
+                onMouseLeave={(e) => {
+                  const overlay = e.currentTarget.querySelector('.hover-overlay');
+                  if (overlay) overlay.style.opacity = '0';
+                }}
               >
                 <div
                   style={{
+                    position: 'relative',
+                    height: '16rem',
+                    borderRadius: '1rem',
+                    overflow: 'hidden',
+                    transition: 'all 0.3s',
                     backgroundColor: 'var(--color-background)',
                     boxShadow: 'var(--style-shadow)',
                     border: 'var(--style-cardBorder)',
                   }}
                   onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'var(--style-glow)'}
                   onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'var(--style-shadow)'}
-                  className="relative h-64 rounded-2xl overflow-hidden transition-all"
                 >
                   {/* GitHub OpenGraph Image */}
                   {project.image && (
@@ -117,8 +140,16 @@ const ProjectsSection: FC = () => {
                       alt={project.title}
                       width={800}
                       height={400}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      style={{ maxHeight: '100%', maxWidth: '100%' }}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
                       onError={(e) => {
                         // Fallback gradient if image fails
                         (e.target as HTMLImageElement).style.display = 'none';
@@ -129,8 +160,12 @@ const ProjectsSection: FC = () => {
                   {/* Fallback gradient if no image */}
                   {!project.image && (
                     <div
-                      className="absolute inset-0"
                       style={{
+                        position: 'absolute',
+                        top: 0,
+                        right: 0,
+                        bottom: 0,
+                        left: 0,
                         background: `linear-gradient(135deg, var(--color-primary), var(--color-secondary))`,
                       }}
                     />
@@ -138,21 +173,38 @@ const ProjectsSection: FC = () => {
 
                   {/* Star Count Badge */}
                   <div
-                    className="absolute top-4 left-4 z-10 px-3 py-1 text-white rounded-full text-xs font-bold flex items-center gap-1"
                     style={{
+                      position: 'absolute',
+                      top: '1rem',
+                      left: '1rem',
+                      zIndex: 10,
+                      padding: '0.25rem 0.75rem',
+                      color: 'white',
+                      borderRadius: '9999px',
+                      fontSize: '0.75rem',
+                      fontWeight: 'var(--style-headingWeight)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.25rem',
                       backgroundColor: 'rgba(0, 0, 0, 0.7)',
                       backdropFilter: 'blur(8px)',
-                      fontWeight: 'var(--style-headingWeight)',
                     }}
                   >
-                    <HiStar className="text-yellow-400" /> {project.stars || 0}
+                    <HiStar style={{ color: '#facc15' }} /> {project.stars || 0}
                   </div>
 
                   {/* Language Badge */}
                   {project.language && (
                     <div
-                      className="absolute top-4 right-4 z-10 px-3 py-1 text-white rounded-full text-xs"
                       style={{
+                        position: 'absolute',
+                        top: '1rem',
+                        right: '1rem',
+                        zIndex: 10,
+                        padding: '0.25rem 0.75rem',
+                        color: 'white',
+                        borderRadius: '9999px',
+                        fontSize: '0.75rem',
                         backgroundColor: 'rgba(0, 0, 0, 0.7)',
                         backdropFilter: 'blur(8px)',
                         fontWeight: 'var(--style-headingWeight)',
@@ -163,17 +215,32 @@ const ProjectsSection: FC = () => {
                   )}
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                    <div className="text-white">
-                      <p className="text-sm mb-2">Click to view details</p>
-                      <div className="flex gap-2">
+                  <div
+                    className="hover-overlay"
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      right: 0,
+                      bottom: 0,
+                      left: 0,
+                      background: 'linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5), transparent)',
+                      opacity: 0,
+                      transition: 'opacity 0.3s',
+                      display: 'flex',
+                      alignItems: 'flex-end',
+                      padding: '1.5rem',
+                    }}
+                  >
+                    <div style={{ color: 'white' }}>
+                      <p style={{ fontSize: '0.875rem', marginBottom: '0.5rem' }}>Click to view details</p>
+                      <div style={{ display: 'flex', gap: '0.5rem' }}>
                         {project.liveUrl && (
-                          <span className="flex items-center gap-1 text-xs">
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.75rem' }}>
                             <HiExternalLink /> Live Demo
                           </span>
                         )}
                         {project.githubUrl && (
-                          <span className="flex items-center gap-1 text-xs">
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem', fontSize: '0.75rem' }}>
                             <FaGithub /> {project.forks || 0} Forks
                           </span>
                         )}
@@ -183,29 +250,41 @@ const ProjectsSection: FC = () => {
                 </div>
 
                 {/* Card Content */}
-                <div className="mt-3 sm:mt-4">
+                <div style={{ marginTop: 'clamp(0.75rem, 2vw, 1rem)' }}>
                   <h3
                     style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
+                      fontSize: 'clamp(1.125rem, 3vw, 1.25rem)',
+                      marginBottom: '0.5rem',
                     }}
-                    className="text-lg sm:text-xl mb-2"
                   >
                     {project.title}
                   </h3>
                   <p
-                    style={{ color: 'var(--color-textSecondary)' }}
-                    className="text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2"
+                    style={{
+                      color: 'var(--color-textSecondary)',
+                      fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
+                      marginBottom: 'clamp(0.5rem, 2vw, 0.75rem)',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
                   >
                     {project.description}
                   </p>
 
                   {/* Sadece forks sayısını göster */}
-                  <div className="flex items-center gap-3 text-xs">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', fontSize: '0.75rem' }}>
                     {(project.forks ?? 0) > 0 && (
                       <span
-                        style={{ color: 'var(--color-textSecondary)' }}
-                        className="flex items-center gap-1"
+                        style={{
+                          color: 'var(--color-textSecondary)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.25rem',
+                        }}
                       >
                         <FaGithub /> {project.forks} forks
                       </span>
@@ -226,71 +305,113 @@ const ProjectsSection: FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            style={{
+              position: 'fixed',
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              backdropFilter: 'blur(4px)',
+              zIndex: 50,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '1rem',
+            }}
           >
             <motion.div
               initial={{ scale: 0.9, y: 50 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.9, y: 50 }}
               onClick={(e) => e.stopPropagation()}
-              className="rounded-xl sm:rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
-              style={{ backgroundColor: 'var(--color-surface)' }}
+              style={{
+                borderRadius: 'clamp(0.75rem, 2vw, 1rem)',
+                maxWidth: '48rem',
+                width: '100%',
+                maxHeight: '90vh',
+                overflowY: 'auto',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                backgroundColor: 'var(--color-surface)',
+              }}
             >
               <button
                 onClick={() => setSelectedProject(null)}
                 style={{
+                  position: 'absolute',
+                  top: '1rem',
+                  right: '1rem',
+                  padding: '0.5rem',
+                  borderRadius: '9999px',
+                  transition: 'all 0.3s',
+                  zIndex: 10,
                   backgroundColor: 'var(--color-surface)',
                   color: 'var(--color-text)',
                 }}
-                className="absolute top-4 right-4 p-2 rounded-full transition-all z-10"
                 onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-primary)'}
                 onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface)'}
               >
-                <HiX className="w-6 h-6" />
+                <HiX style={{ width: '1.5rem', height: '1.5rem' }} />
               </button>
 
               {/* Project Image */}
               {selectedProject.image && (
-                <div className="w-full h-48 sm:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
+                <div style={{
+                  width: '100%',
+                  height: 'clamp(12rem, 30vw, 16rem)',
+                  overflow: 'hidden',
+                  borderTopLeftRadius: 'clamp(0.75rem, 2vw, 1rem)',
+                  borderTopRightRadius: 'clamp(0.75rem, 2vw, 1rem)',
+                }}>
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     width={800}
                     height={400}
-                    className="w-full h-full object-cover"
-                    style={{ maxHeight: '100%', maxWidth: '100%' }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
                   />
                 </div>
               )}
 
-              <div className="p-4 sm:p-6 lg:p-8">
-                <div className="flex items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
+              <div style={{ padding: 'clamp(1rem, 3vw, 2rem)' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 'clamp(0.5rem, 2vw, 1rem)', marginBottom: 'clamp(0.75rem, 2vw, 1rem)' }}>
                   <h2
                     style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
+                      fontSize: 'clamp(1.25rem, 4vw, 1.875rem)',
                     }}
-                    className="text-xl sm:text-2xl lg:text-3xl"
                   >
                     {selectedProject.title}
                   </h2>
 
                   {/* Star & Language */}
-                  <div className="flex gap-2">
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
                     <span
-                      className="flex items-center gap-1 px-3 py-1 rounded-full text-sm"
                       style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.25rem',
+                        padding: '0.25rem 0.75rem',
+                        borderRadius: '9999px',
+                        fontSize: '0.875rem',
                         backgroundColor: 'var(--color-background)',
                         color: 'var(--color-text)',
                         fontWeight: 'var(--style-headingWeight)',
                       }}
                     >
-                      <HiStar className="text-yellow-400" /> {selectedProject.stars || 0}
+                      <HiStar style={{ color: '#facc15' }} /> {selectedProject.stars || 0}
                     </span>
                     {selectedProject.language && (
                       <span
-                        className="px-3 py-1 rounded-full text-sm"
                         style={{
+                          padding: '0.25rem 0.75rem',
+                          borderRadius: '9999px',
+                          fontSize: '0.875rem',
                           backgroundColor: 'var(--color-primary)',
                           color: 'white',
                         }}
@@ -302,18 +423,28 @@ const ProjectsSection: FC = () => {
                 </div>
 
                 <p
-                  style={{ color: 'var(--color-textSecondary)' }}
-                  className="mb-6 leading-relaxed"
+                  style={{
+                    color: 'var(--color-textSecondary)',
+                    marginBottom: '1.5rem',
+                    lineHeight: '1.625',
+                  }}
                 >
                   {selectedProject.description}
                 </p>
 
                 {/* Stats */}
                 {((selectedProject.stars ?? 0) > 0 || (selectedProject.forks ?? 0) > 0) && (
-                  <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                    gap: 'clamp(0.75rem, 2vw, 1rem)',
+                    marginBottom: 'clamp(1rem, 3vw, 1.5rem)',
+                  }}>
                     <div
-                      className="text-center p-3 sm:p-4 rounded-xl"
                       style={{
+                        textAlign: 'center',
+                        padding: 'clamp(0.75rem, 2vw, 1rem)',
+                        borderRadius: '0.75rem',
                         backgroundColor: 'var(--color-background)',
                         border: 'var(--style-cardBorder)',
                       }}
@@ -322,18 +453,20 @@ const ProjectsSection: FC = () => {
                         style={{
                           color: 'var(--color-primary)',
                           fontWeight: 'var(--style-headingWeight)',
+                          fontSize: '1.5rem',
                         }}
-                        className="text-2xl"
                       >
                         ⭐ {selectedProject.stars || 0}
                       </div>
-                      <div style={{ color: 'var(--color-textSecondary)' }} className="text-sm">
+                      <div style={{ color: 'var(--color-textSecondary)', fontSize: '0.875rem' }}>
                         Stars
                       </div>
                     </div>
                     <div
-                      className="text-center p-4 rounded-xl"
                       style={{
+                        textAlign: 'center',
+                        padding: 'clamp(0.75rem, 2vw, 1rem)',
+                        borderRadius: '0.75rem',
                         backgroundColor: 'var(--color-background)',
                         border: 'var(--style-cardBorder)',
                       }}
@@ -342,12 +475,12 @@ const ProjectsSection: FC = () => {
                         style={{
                           color: 'var(--color-primary)',
                           fontWeight: 'var(--style-headingWeight)',
+                          fontSize: '1.5rem',
                         }}
-                        className="text-2xl"
                       >
                         🔱 {selectedProject.forks || 0}
                       </div>
-                      <div style={{ color: 'var(--color-textSecondary)' }} className="text-sm">
+                      <div style={{ color: 'var(--color-textSecondary)', fontSize: '0.875rem' }}>
                         Forks
                       </div>
                     </div>
@@ -355,21 +488,29 @@ const ProjectsSection: FC = () => {
                 )}
 
                 {/* Links */}
-                <div className="flex gap-4">
+                <div style={{ display: 'flex', gap: '1rem' }}>
                   {selectedProject.liveUrl && (
                     <a
                       href={selectedProject.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
+                        flex: 1,
+                        padding: '0.75rem 1.5rem',
+                        color: 'white',
+                        borderRadius: '0.75rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        transition: 'all 0.3s',
                         background: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
                         fontWeight: 'var(--style-headingWeight)',
                       }}
-                      className="flex-1 px-6 py-3 text-white rounded-xl flex items-center justify-center gap-2 transition-all"
                       onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'var(--style-glow)'}
                       onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'none'}
                     >
-                      <HiExternalLink className="w-5 h-5" />
+                      <HiExternalLink style={{ width: '1.25rem', height: '1.25rem' }} />
                       Live Demo
                     </a>
                   )}
@@ -379,12 +520,19 @@ const ProjectsSection: FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{
+                        flex: 1,
+                        padding: '0.75rem 1.5rem',
+                        borderRadius: '0.75rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.5rem',
+                        transition: 'all 0.3s',
                         backgroundColor: 'var(--color-background)',
                         color: 'var(--color-text)',
                         border: 'var(--style-cardBorder)',
                         fontWeight: 'var(--style-headingWeight)',
                       }}
-                      className="flex-1 px-6 py-3 rounded-xl flex items-center justify-center gap-2 transition-all"
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = 'var(--color-primary)';
                         e.currentTarget.style.color = 'white';
@@ -394,7 +542,7 @@ const ProjectsSection: FC = () => {
                         e.currentTarget.style.color = 'var(--color-text)';
                       }}
                     >
-                      <FaGithub className="w-5 h-5" />
+                      <FaGithub style={{ width: '1.25rem', height: '1.25rem' }} />
                       View Code
                     </a>
                   )}
