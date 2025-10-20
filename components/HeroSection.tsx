@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { siteConfig } from '../lib/config';
@@ -11,7 +12,7 @@ const Scene3D = dynamic(() => import('./3d/Scene3D'), {
   ),
 });
 
-export default function HeroSection() {
+const HeroSection: FC = () => {
   const scrollToNext = () => {
     window.scrollTo({
       top: window.innerHeight,
@@ -242,4 +243,6 @@ export default function HeroSection() {
       </motion.button>
     </section>
   );
-}
+};
+
+export default HeroSection;

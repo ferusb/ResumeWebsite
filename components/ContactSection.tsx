@@ -1,19 +1,21 @@
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { siteConfig } from '../lib/config';
 import { HiMail } from 'react-icons/hi';
-import { 
-  FaFacebook, FaInstagram, FaYoutube, FaGithub, 
-  FaTelegram, FaTwitter, FaLinkedin 
+import type { IconType } from 'react-icons';
+import {
+  FaFacebook, FaInstagram, FaYoutube, FaGithub,
+  FaTelegram, FaTwitter, FaLinkedin
 } from 'react-icons/fa';
 
-export default function ContactSection() {
+const ContactSection: FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const socialIcons = {
+  const socialIcons: Record<string, IconType> = {
     facebook: FaFacebook,
     instagram: FaInstagram,
     youtube: FaYoutube,
@@ -125,4 +127,6 @@ export default function ContactSection() {
       </div>
     </section>
   );
-}
+};
+
+export default ContactSection;

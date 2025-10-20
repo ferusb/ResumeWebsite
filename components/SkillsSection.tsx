@@ -1,9 +1,10 @@
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { siteConfig } from '../lib/config';
 import { useState } from 'react';
 
-export default function SkillsSection() {
+const SkillsSection: FC = () => {
   const [activeCategory, setActiveCategory] = useState('frontend');
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -39,11 +40,11 @@ export default function SkillsSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <h2 
+          <h2
             style={{ fontWeight: 'var(--style-headingWeight)' }}
             className="text-4xl md:text-5xl mb-4"
           >
-            <span 
+            <span
               className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
@@ -52,7 +53,7 @@ export default function SkillsSection() {
               Skills & Technologies
             </span>
           </h2>
-          <p 
+          <p
             style={{ color: 'var(--color-textSecondary)' }}
             className="text-xl max-w-2xl mx-auto"
           >
@@ -69,7 +70,7 @@ export default function SkillsSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                background: activeCategory === category.id 
+                background: activeCategory === category.id
                   ? `linear-gradient(to right, var(--color-primary), var(--color-secondary))`
                   : 'var(--color-surface)',
                 color: activeCategory === category.id ? 'white' : 'var(--color-text)',
@@ -98,7 +99,7 @@ export default function SkillsSection() {
               key={skill.name}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
-              style={{ 
+              style={{
                 background: 'var(--color-background)',
                 border: 'var(--style-cardBorder)',
                 boxShadow: 'var(--style-shadow)',
@@ -108,7 +109,7 @@ export default function SkillsSection() {
               className="p-6 rounded-2xl transition-all"
             >
               <div className="flex items-center gap-4 mb-4">
-                <div 
+                <div
                   className="w-12 h-12 rounded-lg p-2 flex items-center justify-center"
                   style={{
                     backgroundColor: 'var(--color-surface)',
@@ -122,8 +123,8 @@ export default function SkillsSection() {
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 
-                    style={{ 
+                  <h3
+                    style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
                     }}
@@ -131,7 +132,7 @@ export default function SkillsSection() {
                   >
                     {skill.name}
                   </h3>
-                  <p 
+                  <p
                     style={{ color: 'var(--color-textSecondary)' }}
                     className="text-sm"
                   >
@@ -141,7 +142,7 @@ export default function SkillsSection() {
               </div>
 
               {/* Progress Bar */}
-              <div 
+              <div
                 className="relative h-2 rounded-full overflow-hidden"
                 style={{ backgroundColor: 'var(--color-surface)' }}
               >
@@ -161,4 +162,6 @@ export default function SkillsSection() {
       </div>
     </section>
   );
-}
+};
+
+export default SkillsSection;

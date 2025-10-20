@@ -1,27 +1,40 @@
+import type { FC } from 'react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { siteConfig } from '../lib/config';
-import { HiExternalLink, HiCode, HiX, HiStar } from 'react-icons/hi';
+import { HiExternalLink, HiX, HiStar } from 'react-icons/hi';
 import { FaGithub } from 'react-icons/fa';
 
-export default function ProjectsSection() {
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  image?: string;
+  stars?: number;
+  forks?: number;
+  language?: string;
+  liveUrl?: string;
+  githubUrl?: string;
+}
+
+const ProjectsSection: FC = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [filter, setFilter] = useState('all');
 
   // Use static projects from config
-  const projects = siteConfig.projects || [];
+  const projects: Project[] = siteConfig.projects || [];
 
   // Sadece programlama dillerini filtre olarak göster
   const allLanguages = ['all', ...new Set(projects.map(p => p.language).filter(Boolean))];
 
   // Filter projeleri dile göre
-  const filteredProjects = filter === 'all' 
-    ? projects 
+  const filteredProjects = filter === 'all'
+    ? projects
     : projects.filter(p => p.language?.toLowerCase() === filter.toLowerCase());
 
   return (
@@ -54,7 +67,7 @@ export default function ProjectsSection() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                background: filter === lang 
+                background: filter === lang
                   ? `linear-gradient(to right, var(--color-primary), var(--color-secondary))`
                   : 'var(--color-surface)',
                 color: filter === lang ? 'white' : 'var(--color-text)',
@@ -87,7 +100,7 @@ export default function ProjectsSection() {
                 onClick={() => setSelectedProject(project)}
                 className="group relative cursor-pointer"
               >
-                <div 
+                <div
                   style={{
                     backgroundColor: 'var(--color-background)',
                     boxShadow: 'var(--style-shadow)',
@@ -99,31 +112,31 @@ export default function ProjectsSection() {
                 >
                   {/* GitHub OpenGraph Image */}
                   {project.image && (
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.title}
                       className="absolute inset-0 w-full h-full object-cover"
                       onError={(e) => {
                         // Fallback gradient if image fails
-                        e.target.style.display = 'none';
+                        (e.target as HTMLImageElement).style.display = 'none';
                       }}
                     />
                   )}
-                  
+
                   {/* Fallback gradient if no image */}
                   {!project.image && (
-                    <div 
+                    <div
                       className="absolute inset-0"
                       style={{
                         background: `linear-gradient(135deg, var(--color-primary), var(--color-secondary))`,
                       }}
                     />
                   )}
-                  
+
                   {/* Star Count Badge */}
-                  <div 
+                  <div
                     className="absolute top-4 left-4 z-10 px-3 py-1 text-white rounded-full text-xs font-bold flex items-center gap-1"
-                    style={{ 
+                    style={{
                       backgroundColor: 'rgba(0, 0, 0, 0.7)',
                       backdropFilter: 'blur(8px)',
                       fontWeight: 'var(--style-headingWeight)',
@@ -134,9 +147,9 @@ export default function ProjectsSection() {
 
                   {/* Language Badge */}
                   {project.language && (
-                    <div 
+                    <div
                       className="absolute top-4 right-4 z-10 px-3 py-1 text-white rounded-full text-xs"
-                      style={{ 
+                      style={{
                         backgroundColor: 'rgba(0, 0, 0, 0.7)',
                         backdropFilter: 'blur(8px)',
                         fontWeight: 'var(--style-headingWeight)',
@@ -168,8 +181,8 @@ export default function ProjectsSection() {
 
                 {/* Card Content */}
                 <div className="mt-3 sm:mt-4">
-                  <h3 
-                    style={{ 
+                  <h3
+                    style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
                     }}
@@ -177,7 +190,7 @@ export default function ProjectsSection() {
                   >
                     {project.title}
                   </h3>
-                  <p 
+                  <p
                     style={{ color: 'var(--color-textSecondary)' }}
                     className="text-xs sm:text-sm mb-2 sm:mb-3 line-clamp-2"
                   >
@@ -186,8 +199,8 @@ export default function ProjectsSection() {
 
                   {/* Sadece forks sayısını göster */}
                   <div className="flex items-center gap-3 text-xs">
-                    {project.forks > 0 && (
-                      <span 
+                    {(project.forks ?? 0) > 0 && (
+                      <span
                         style={{ color: 'var(--color-textSecondary)' }}
                         className="flex items-center gap-1"
                       >
@@ -222,7 +235,7 @@ export default function ProjectsSection() {
             >
               <button
                 onClick={() => setSelectedProject(null)}
-                style={{ 
+                style={{
                   backgroundColor: 'var(--color-surface)',
                   color: 'var(--color-text)',
                 }}
@@ -236,8 +249,8 @@ export default function ProjectsSection() {
               {/* Project Image */}
               {selectedProject.image && (
                 <div className="w-full h-48 sm:h-64 overflow-hidden rounded-t-xl sm:rounded-t-2xl">
-                  <img 
-                    src={selectedProject.image} 
+                  <img
+                    src={selectedProject.image}
                     alt={selectedProject.title}
                     className="w-full h-full object-cover"
                   />
@@ -246,8 +259,8 @@ export default function ProjectsSection() {
 
               <div className="p-4 sm:p-6 lg:p-8">
                 <div className="flex items-start justify-between gap-2 sm:gap-4 mb-3 sm:mb-4">
-                  <h2 
-                    style={{ 
+                  <h2
+                    style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
                     }}
@@ -255,10 +268,10 @@ export default function ProjectsSection() {
                   >
                     {selectedProject.title}
                   </h2>
-                  
+
                   {/* Star & Language */}
                   <div className="flex gap-2">
-                    <span 
+                    <span
                       className="flex items-center gap-1 px-3 py-1 rounded-full text-sm"
                       style={{
                         backgroundColor: 'var(--color-background)',
@@ -269,7 +282,7 @@ export default function ProjectsSection() {
                       <HiStar className="text-yellow-400" /> {selectedProject.stars || 0}
                     </span>
                     {selectedProject.language && (
-                      <span 
+                      <span
                         className="px-3 py-1 rounded-full text-sm"
                         style={{
                           backgroundColor: 'var(--color-primary)',
@@ -282,7 +295,7 @@ export default function ProjectsSection() {
                   </div>
                 </div>
 
-                <p 
+                <p
                   style={{ color: 'var(--color-textSecondary)' }}
                   className="mb-6 leading-relaxed"
                 >
@@ -290,17 +303,17 @@ export default function ProjectsSection() {
                 </p>
 
                 {/* Stats */}
-                {(selectedProject.stars > 0 || selectedProject.forks > 0) && (
+                {((selectedProject.stars ?? 0) > 0 || (selectedProject.forks ?? 0) > 0) && (
                   <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
-                    <div 
+                    <div
                       className="text-center p-3 sm:p-4 rounded-xl"
                       style={{
                         backgroundColor: 'var(--color-background)',
                         border: 'var(--style-cardBorder)',
                       }}
                     >
-                      <div 
-                        style={{ 
+                      <div
+                        style={{
                           color: 'var(--color-primary)',
                           fontWeight: 'var(--style-headingWeight)',
                         }}
@@ -312,15 +325,15 @@ export default function ProjectsSection() {
                         Stars
                       </div>
                     </div>
-                    <div 
+                    <div
                       className="text-center p-4 rounded-xl"
                       style={{
                         backgroundColor: 'var(--color-background)',
                         border: 'var(--style-cardBorder)',
                       }}
                     >
-                      <div 
-                        style={{ 
+                      <div
+                        style={{
                           color: 'var(--color-primary)',
                           fontWeight: 'var(--style-headingWeight)',
                         }}
@@ -387,4 +400,6 @@ export default function ProjectsSection() {
       </AnimatePresence>
     </section>
   );
-}
+};
+
+export default ProjectsSection;
