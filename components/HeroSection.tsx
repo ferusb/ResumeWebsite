@@ -78,191 +78,7 @@ const HeroSection: FC = () => {
           justifyContent: 'space-between',
           gap: '3rem',
         }}>
-          {/* Text Content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            style={{
-              flex: 1,
-              textAlign: 'center',
-            }}
-          >
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              style={{
-                fontSize: 'clamp(1.125rem, 3vw, 1.25rem)',
-                fontWeight: 500,
-                color: 'var(--color-primary)',
-                marginBottom: '1rem',
-              }}
-            >
-              👋 Welcome to my portfolio
-            </motion.p>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              style={{
-                fontWeight: 'var(--style-headingWeight)',
-                fontSize: 'clamp(2.25rem, 8vw, 4.5rem)',
-                marginBottom: '1.5rem',
-              }}
-            >
-              <span
-                style={{
-                  backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary), var(--color-accent))`,
-                  textShadow: 'var(--style-glow)',
-                  backgroundClip: 'text',
-                  WebkitBackgroundClip: 'text',
-                  color: 'transparent',
-                }}
-              >
-                {siteConfig.personal.name}
-              </span>
-            </motion.h1>
-
-            <div
-              style={{
-                color: 'var(--color-text)',
-                fontWeight: 'var(--style-headingWeight)',
-                fontSize: 'clamp(1.5rem, 5vw, 2.25rem)',
-                marginBottom: '1.5rem',
-                height: '5rem',
-              }}
-            >
-              <TypeAnimation
-                sequence={[
-                  'Full-Stack Developer',
-                  2000,
-                  'Content Creator',
-                  2000,
-                  'Community Manager',
-                  2000,
-                  'Tech Enthusiast',
-                  2000,
-                ]}
-                wrapper="span"
-                speed={50}
-                repeat={Infinity}
-              />
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              style={{
-                color: 'var(--color-textSecondary)',
-                fontSize: 'clamp(1.125rem, 3vw, 1.25rem)',
-                marginBottom: '2rem',
-                maxWidth: '42rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}
-              dangerouslySetInnerHTML={{ __html: siteConfig.about.intro }}
-            />
-
-            {/* Highlights */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
-                gap: '1rem',
-                marginBottom: '2rem',
-                maxWidth: '32rem',
-                marginLeft: 'auto',
-                marginRight: 'auto',
-              }}
-            >
-              {siteConfig.about.highlights.map((highlight, index) => (
-                <motion.div
-                  key={index}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  style={{
-                    padding: '0.75rem',
-                    borderRadius: '0.75rem',
-                    backdropFilter: 'blur(4px)',
-                    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-                    backgroundColor: 'var(--color-surface)',
-                    border: 'var(--style-cardBorder)',
-                    boxShadow: 'var(--style-shadow)',
-                    color: 'var(--color-text)',
-                  }}
-                >
-                  {highlight}
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {/* CTA Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '1rem',
-                justifyContent: 'center',
-              }}
-            >
-              <motion.a
-                href="#projects"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                style={{
-                  padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
-                  color: 'white',
-                  borderRadius: '9999px',
-                  transition: 'all 0.3s',
-                  fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-                  background: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
-                  boxShadow: 'var(--style-shadow)',
-                  fontWeight: 'var(--style-headingWeight)',
-                }}
-                onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'var(--style-glow)'}
-                onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'var(--style-shadow)'}
-              >
-                View My Work
-              </motion.a>
-
-              {siteConfig.personal.resumeUrl && (
-                <motion.a
-                  href={siteConfig.personal.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  style={{
-                    padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 3vw, 2rem)',
-                    borderRadius: '9999px',
-                    transition: 'all 0.3s',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-                    backgroundColor: 'var(--color-surface)',
-                    color: 'var(--color-text)',
-                    border: 'var(--style-cardBorder)',
-                    boxShadow: 'var(--style-shadow)',
-                    fontWeight: 'var(--style-headingWeight)',
-                  }}
-                >
-                  <HiDownload style={{ width: '1.25rem', height: '1.25rem' }} />
-                  Download CV
-                </motion.a>
-              )}
-            </motion.div>
-          </motion.div>
-
-          {/* Avatar */}
+               {/* Avatar */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -343,6 +159,150 @@ const HeroSection: FC = () => {
               />
             </motion.div>
           </motion.div>
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            style={{
+              flex: 1,
+              textAlign: 'center',
+            }}
+          >
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              style={{
+                fontSize: 'clamp(1.125rem, 3vw, 1.25rem)',
+                fontWeight: 500,
+                color: 'var(--color-primary)',
+                marginBottom: '1rem',
+              }}
+            >
+              👋 Welcome to my portfolio
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              style={{
+                fontWeight: 'var(--style-headingWeight)',
+                fontSize: 'clamp(2.25rem, 8vw, 4.5rem)',
+                marginBottom: '1.5rem',
+              }}
+            >
+              <span
+                style={{
+                  backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary), var(--color-accent))`,
+                  textShadow: 'var(--style-glow)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  color: 'transparent',
+                }}
+              >
+                {siteConfig.personal.name}
+              </span>
+            </motion.h1>
+
+            <div
+              style={{
+                color: 'var(--color-text)',
+                fontWeight: 'var(--style-headingWeight)',
+                fontSize: 'clamp(1.5rem, 5vw, 2.25rem)',
+                marginBottom: '1.5rem',
+                height: '5rem',
+              }}
+            >
+              <TypeAnimation
+                sequence={[
+                  'Frontend Developer',
+                  2000,
+                  'Fullstack Developer',
+                  2000,
+                  'Problem Solver',
+                  2000,
+                  'Senior Engineer',
+                  2000,
+                  'User Experience Crafter',
+                  2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                repeat={Infinity}
+              />
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              style={{
+                color: 'var(--color-textSecondary)',
+                fontSize: 'clamp(1.125rem, 3vw, 1.25rem)',
+                marginBottom: '2rem',
+                maxWidth: '42rem',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+              dangerouslySetInnerHTML={{ __html: siteConfig.about.intro }}
+            />
+
+            {/* Highlights */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: '1rem',
+                marginBottom: '2rem',
+                maxWidth: '32rem',
+                marginLeft: 'auto',
+                marginRight: 'auto',
+              }}
+            >
+              {siteConfig.about.highlights.map((highlight, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  style={{
+                    padding: '0.75rem',
+                    borderRadius: '0.75rem',
+                    backdropFilter: 'blur(4px)',
+                    fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                    backgroundColor: 'var(--color-surface)',
+                    border: 'var(--style-cardBorder)',
+                    boxShadow: 'var(--style-shadow)',
+                    color: 'var(--color-text)',
+                  }}
+                >
+                  {highlight}
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 }}
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '1rem',
+                justifyContent: 'center',
+              }}
+            >
+            
+
+       
+            </motion.div>
+          </motion.div>
+
+     
         </div>
       </div>
 
