@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useMemo, useCallback, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useMemo, useCallback, useEffect, ReactNode } from 'react';
 import { ThemeMode, ThemeConfiguration } from '../types/theme.types';
 import { themes } from '../lib/config';
 
@@ -38,6 +38,23 @@ export const StyleProvider: React.FC<StyleProviderProps> = ({
     () => themes[activeTheme],
     [activeTheme]
   );
+
+  // Apply CSS variables to document root
+  useEffect(() => {
+    if (typeof window !== 'undefined' && themeConfig) {
+      const root = document.documentElement;
+
+      // Apply color variables
+      Object.entries(themeConfig.colors).forEach(([key, value]) => {
+        root.style.setProperty(`--color-${key}`, value);
+      });
+
+      // Apply style variables
+      Object.entries(themeConfig.styles).forEach(([key, value]) => {
+        root.style.setProperty(`--style-${key}`, value);
+      });
+    }
+  }, [themeConfig]);
 
   const switchTheme = useCallback((theme: ThemeMode) => {
     if (themes[theme]) {
