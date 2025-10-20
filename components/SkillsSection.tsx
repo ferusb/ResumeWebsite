@@ -149,42 +149,12 @@ const SkillsSection: FC = () => {
                     style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
-                      fontSize: '0.875rem',
+                      fontSize: '1rem',
                     }}
                   >
                     {skill.name}
                   </h3>
-                  <p
-                    style={{ color: 'var(--color-textSecondary)', fontSize: '0.875rem' }}
-                  >
-                    {skill.level}% Proficiency
-                  </p>
                 </div>
-              </div>
-
-              {/* Progress Bar */}
-              <div
-                style={{
-                  backgroundColor: 'var(--color-surface)',
-                  position: 'relative',
-                  height: '0.5rem',
-                  borderRadius: '9999px',
-                  overflow: 'hidden',
-                }}
-              >
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={inView ? { width: `${skill.level}%` } : {}}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                  style={{
-                    background: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
-                    position: 'absolute',
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    borderRadius: '9999px',
-                  }}
-                />
               </div>
             </motion.div>
           ))}

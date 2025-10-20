@@ -42,7 +42,7 @@ const ExperienceSection: FC = () => {
           {siteConfig.experience.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: index * 0.2 }}
               style={{ position: 'relative', marginBottom: index === siteConfig.experience.length - 1 ? 0 : '3rem' }}
