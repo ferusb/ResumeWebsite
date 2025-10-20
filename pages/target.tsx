@@ -1,7 +1,8 @@
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-export default function Target() {
+const Target: FC = () => {
   const [activeProject, setActiveProject] = useState<string | null>(null);
 
   const timeline = [
@@ -639,4 +640,6 @@ export default function Target() {
       </div>
     </div>
   );
-}
+};
+
+export default Target;

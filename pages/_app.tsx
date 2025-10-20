@@ -1,9 +1,10 @@
 import type { AppProps } from 'next/app';
+import { FC } from 'react';
 import { StyleProvider, useStyleContext } from '../contexts/StyleContext';
 import '../styles/globals.css';
 import '../styles/main.scss';
 
-function AppContent({ Component, pageProps }: AppProps) {
+const AppContent: FC<AppProps> = ({ Component, pageProps }) => {
   const { activeTheme } = useStyleContext();
 
   return (
@@ -11,14 +12,12 @@ function AppContent({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
     </div>
   );
-}
+};
 
-function PortfolioApplication(props: AppProps) {
-  return (
-    <StyleProvider initialTheme="purple">
-      <AppContent {...props} />
-    </StyleProvider>
-  );
-}
+const App: FC<AppProps> = (props) => (
+  <StyleProvider initialTheme="purple">
+    <AppContent {...props} />
+  </StyleProvider>
+);
 
-export default PortfolioApplication;
+export default App;

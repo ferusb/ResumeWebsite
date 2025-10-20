@@ -1,7 +1,8 @@
+import type { FC } from 'react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-export default function Verily() {
+const Verily: FC = () => {
   const [activeProject, setActiveProject] = useState<string | null>(null);
 
   const projects = [
@@ -424,4 +425,6 @@ export default function Verily() {
       </div>
     </div>
   );
-}
+};
+
+export default Verily;
