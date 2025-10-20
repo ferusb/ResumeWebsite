@@ -33,36 +33,36 @@ const SkillsSection: FC = () => {
   };
 
   return (
-    <section ref={ref} id="skills" className="py-20" style={{ backgroundColor: 'var(--color-surface)' }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section ref={ref} id="skills" style={{ backgroundColor: 'var(--color-surface)', padding: '5rem 0' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-16"
+          style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
           <h2
-            style={{ fontWeight: 'var(--style-headingWeight)' }}
-            className="text-4xl md:text-5xl mb-4"
+            style={{ fontWeight: 'var(--style-headingWeight)', fontSize: 'clamp(2.25rem, 5vw, 3rem)', marginBottom: '1rem' }}
           >
             <span
-              className="bg-clip-text text-transparent"
               style={{
                 backgroundImage: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
               }}
             >
               Skills & Technologies
             </span>
           </h2>
           <p
-            style={{ color: 'var(--color-textSecondary)' }}
-            className="text-xl max-w-2xl mx-auto"
+            style={{ color: 'var(--color-textSecondary)', fontSize: '1.25rem', maxWidth: '42rem', margin: '0 auto' }}
           >
             Here are the technologies and tools I work with
           </p>
         </motion.div>
 
         {/* Category Tabs */}
-        <div className="flex justify-center gap-2 sm:gap-4 mb-12 flex-wrap">
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
           {categories.map((category) => (
             <motion.button
               key={category.id}
@@ -70,17 +70,27 @@ const SkillsSection: FC = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               style={{
-                background: activeCategory === category.id
-                  ? `linear-gradient(to right, var(--color-primary), var(--color-secondary))`
-                  : 'var(--color-surface)',
-                color: activeCategory === category.id ? 'white' : 'var(--color-text)',
-                boxShadow: activeCategory === category.id ? 'var(--style-glow)' : 'var(--style-shadow)',
-                border: activeCategory === category.id ? 'none' : 'var(--style-cardBorder)',
-                fontWeight: activeCategory === category.id ? 'var(--style-headingWeight)' : 'var(--style-fontWeight)',
+                ...(activeCategory === category.id ? {
+                  background: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
+                  color: 'white',
+                  boxShadow: 'var(--style-glow)',
+                  border: 'none',
+                  fontWeight: 'var(--style-headingWeight)',
+                } : {
+                  background: 'var(--color-surface)',
+                  color: 'var(--color-text)',
+                  boxShadow: 'var(--style-shadow)',
+                  border: 'var(--style-cardBorder)',
+                  fontWeight: 'var(--style-fontWeight)',
+                }),
+                padding: '0.75rem 1.5rem',
+                borderRadius: '9999px',
+                transition: 'all 0.3s',
+                fontSize: '1rem',
+                cursor: 'pointer',
               }}
-              className="px-4 py-2 sm:px-6 sm:py-3 rounded-full transition-all text-sm sm:text-base"
             >
-              <span className="mr-1 sm:mr-2">{category.icon}</span>
+              <span style={{ marginRight: '0.5rem' }}>{category.icon}</span>
               {category.label}
             </motion.button>
           ))}
@@ -92,51 +102,60 @@ const SkillsSection: FC = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '1.5rem',
+          }}
         >
           {siteConfig.skills[activeCategory]?.map((skill, index) => (
             <motion.div
               key={skill.name}
               variants={itemVariants}
               whileHover={{ y: -5, scale: 1.02 }}
+              onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'var(--style-glow)'}
+              onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'var(--style-shadow)'}
               style={{
                 background: 'var(--color-background)',
                 border: 'var(--style-cardBorder)',
                 boxShadow: 'var(--style-shadow)',
+                padding: '1.5rem',
+                borderRadius: '1rem',
+                transition: 'all 0.3s',
               }}
-              onMouseEnter={(e) => e.currentTarget.style.boxShadow = 'var(--style-glow)'}
-              onMouseLeave={(e) => e.currentTarget.style.boxShadow = 'var(--style-shadow)'}
-              className="p-6 rounded-2xl transition-all"
             >
-              <div className="flex items-center gap-4 mb-4">
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                 <div
-                  className="w-12 h-12 rounded-lg p-2 flex items-center justify-center"
                   style={{
                     backgroundColor: 'var(--color-surface)',
                     boxShadow: 'var(--style-shadow)',
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '0.5rem',
+                    padding: '0.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                   }}
                 >
                   <img
                     src={`/assets/techs/${skill.icon}`}
                     alt={skill.name}
-                    width={48}
-                    height={48}
-                    style={{ width: '100%', height: '100%', objectFit: 'contain', maxHeight: '100%', maxWidth: '100%' }}
+                    style={{ width: '32px', height: '32px', objectFit: 'contain' }}
                   />
                 </div>
-                <div className="flex-1">
+                <div style={{ flex: 1 }}>
                   <h3
                     style={{
                       color: 'var(--color-text)',
                       fontWeight: 'var(--style-headingWeight)',
+                      fontSize: '0.875rem',
                     }}
-                    className="text-sm"
                   >
                     {skill.name}
                   </h3>
                   <p
-                    style={{ color: 'var(--color-textSecondary)' }}
-                    className="text-sm"
+                    style={{ color: 'var(--color-textSecondary)', fontSize: '0.875rem' }}
                   >
                     {skill.level}% Proficiency
                   </p>
@@ -145,8 +164,13 @@ const SkillsSection: FC = () => {
 
               {/* Progress Bar */}
               <div
-                className="relative h-2 rounded-full overflow-hidden"
-                style={{ backgroundColor: 'var(--color-surface)' }}
+                style={{
+                  backgroundColor: 'var(--color-surface)',
+                  position: 'relative',
+                  height: '0.5rem',
+                  borderRadius: '9999px',
+                  overflow: 'hidden',
+                }}
               >
                 <motion.div
                   initial={{ width: 0 }}
@@ -154,8 +178,12 @@ const SkillsSection: FC = () => {
                   transition={{ duration: 1, delay: index * 0.1 }}
                   style={{
                     background: `linear-gradient(to right, var(--color-primary), var(--color-secondary))`,
+                    position: 'absolute',
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    borderRadius: '9999px',
                   }}
-                  className="absolute inset-y-0 left-0 rounded-full"
                 />
               </div>
             </motion.div>
