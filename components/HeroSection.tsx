@@ -210,6 +210,7 @@ const HeroSection: FC = () => {
                   width={384}
                   height={384}
                   className="w-full h-full object-cover"
+                  style={{ maxHeight: '100%', maxWidth: '100%' }}
                 />
               </div>
 

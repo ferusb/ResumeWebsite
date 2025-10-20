@@ -97,8 +97,8 @@ img {
   border: 0;
   vertical-align: middle;
 
-  // Only apply height: auto to images that don't have explicit sizing
-  &:not([class*="w-full"]):not([class*="h-full"]):not([class*="object-"]) {
+  // Don't apply height: auto to images that should maintain aspect ratio within containers
+  &:not([style*="maxHeight"]) {
     height: auto;
   }
 }

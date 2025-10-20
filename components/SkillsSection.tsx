@@ -121,7 +121,7 @@ const SkillsSection: FC = () => {
                     alt={skill.name}
                     width={48}
                     height={48}
-                    className="w-full h-full object-contain"
+                    style={{ width: '100%', height: '100%', objectFit: 'contain', maxHeight: '100%', maxWidth: '100%' }}
                   />
                 </div>
                 <div className="flex-1">

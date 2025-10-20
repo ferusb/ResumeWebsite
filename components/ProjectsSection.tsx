@@ -118,6 +118,7 @@ const ProjectsSection: FC = () => {
                       width={800}
                       height={400}
                       className="absolute inset-0 w-full h-full object-cover"
+                      style={{ maxHeight: '100%', maxWidth: '100%' }}
                       onError={(e) => {
                         // Fallback gradient if image fails
                         (e.target as HTMLImageElement).style.display = 'none';
@@ -257,6 +258,7 @@ const ProjectsSection: FC = () => {
                     width={800}
                     height={400}
                     className="w-full h-full object-cover"
+                    style={{ maxHeight: '100%', maxWidth: '100%' }}
                   />
                 </div>
               )}
