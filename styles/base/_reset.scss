@@ -94,9 +94,13 @@ sub {
 // Embedded content
 img {
   max-width: 100%;
-  height: auto;
   border: 0;
   vertical-align: middle;
+
+  // Only apply height: auto to images that don't have explicit sizing
+  &:not([class*="w-full"]):not([class*="h-full"]):not([class*="object-"]) {
+    height: auto;
+  }
 }
 
 svg {
