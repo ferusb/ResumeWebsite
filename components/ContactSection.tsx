@@ -16,12 +16,7 @@ const ContactSection: FC = () => {
   });
 
   const socialIcons: Record<string, IconType> = {
-    facebook: FaFacebook,
-    instagram: FaInstagram,
-    youtube: FaYoutube,
     github: FaGithub,
-    telegram: FaTelegram,
-    twitter: FaTwitter,
     linkedin: FaLinkedin,
   };
 
