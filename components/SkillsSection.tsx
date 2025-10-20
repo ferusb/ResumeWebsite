@@ -119,6 +119,8 @@ const SkillsSection: FC = () => {
                   <img
                     src={`/assets/techs/${skill.icon}`}
                     alt={skill.name}
+                    width={48}
+                    height={48}
                     className="w-full h-full object-contain"
                   />
                 </div>

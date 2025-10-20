@@ -197,7 +197,7 @@ const HeroSection: FC = () => {
               />
               
               {/* Avatar Image */}
-              <div 
+              <div
                 className="relative w-full h-full rounded-full overflow-hidden border-4 shadow-2xl"
                 style={{
                   borderColor: 'var(--color-surface)',
@@ -207,6 +207,8 @@ const HeroSection: FC = () => {
                 <img
                   src={siteConfig.personal.avatar}
                   alt={siteConfig.personal.name}
+                  width={384}
+                  height={384}
                   className="w-full h-full object-cover"
                 />
               </div>

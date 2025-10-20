@@ -115,6 +115,8 @@ const ProjectsSection: FC = () => {
                     <img
                       src={project.image}
                       alt={project.title}
+                      width={800}
+                      height={400}
                       className="absolute inset-0 w-full h-full object-cover"
                       onError={(e) => {
                         // Fallback gradient if image fails
@@ -252,6 +254,8 @@ const ProjectsSection: FC = () => {
                   <img
                     src={selectedProject.image}
                     alt={selectedProject.title}
+                    width={800}
+                    height={400}
                     className="w-full h-full object-cover"
                   />
                 </div>
