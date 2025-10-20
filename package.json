@@ -27,7 +27,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "test:ci": "jest --ci --coverage --maxWorkers=2"
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
+    "deploy": "npm run build && echo '\n✅ Build complete! Upload the out/ directory to S3'"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
